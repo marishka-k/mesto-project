@@ -1,0 +1,10 @@
+.card__foto {
+  max-width: 100%;
+  margin-bottom: 25px;
+}
+
+@media all and (max-width: 1100px) {
+  .card__foto {
+    margin-bottom: 22px;
+  }
+}

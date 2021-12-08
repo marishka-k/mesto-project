@@ -1,0 +1,9 @@
+.cards {
+  padding-bottom: 69px;
+}
+
+@media all and (max-width: 1100px) {
+  .cards {
+    padding-bottom: 50px;
+  }
+}

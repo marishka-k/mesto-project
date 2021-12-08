@@ -1,0 +1,9 @@
+.main {
+  padding: 0;
+}
+
+@media all and (max-width: 1100px) {
+  .main {
+    padding: 0 19px;
+  }
+}
