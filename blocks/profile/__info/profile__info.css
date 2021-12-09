@@ -1,8 +1,10 @@
 .profile__info {
-  display: flex;
-  position: relative;
-  flex-wrap: wrap;
-  max-width: 336px;
+  display: grid;
+  grid-template: repeat(2, 1fr) / 7% 1fr 7%;
+  grid-template-areas:
+    "profile__name profile__name profile__edit-button"
+    "profile__contact-info profile__contact-info .";
+  width: 336px;
   margin: 22px 0 0;
   color: #fff;
   text-overflow: ellipsis;
@@ -12,10 +14,12 @@
 
 @media all and (max-width: 1100px) {
   .profile__info {
-    max-width: 260px;
-    padding: 0 28px;
-    flex-direction: column;
-    justify-content: center;
-    margin: 26px auto 0;
+    grid-template: repeat(2, 1fr) / 8% 1fr 8%;
+    grid-template-areas:
+      ". profile__name profile__edit-button"
+      ". profile__contact-info .";
+    width: 247px;
+    margin: 0;
+    justify-self: center;
   }
 }

@@ -1,5 +1,4 @@
 .profile__edit-button {
-  position: absolute;
   background-color: inherit;
   border: solid 1px #fff;
   background-image: url(../../../images/pancil.svg);
@@ -7,8 +6,7 @@
   background-position: center;
   padding: 0;
   margin: 0;
-  top: 0;
-  right: 0;
+  grid-area: profile__edit-button;
   transform: translate(-1%, 63%);
   width: 24px;
   height: 24px;

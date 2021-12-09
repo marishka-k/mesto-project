@@ -3,9 +3,9 @@
   margin-block-end: 0;
   margin-inline-start: 0;
   margin-inline-end: 0;
-  margin: 0 19px -10px 0;
+  margin: 0;
   padding: 0;
-  max-width: 298px;
+  grid-area: profile__name;
   font-weight: 500;
   font-size: 42px;
   line-height: 48px;
@@ -18,6 +18,6 @@
   .profile__name {
     font-size: 27px;
     line-height: 33px;
-    margin: 0 auto 2px;
+    justify-self: center;
   }
 }
