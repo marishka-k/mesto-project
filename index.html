@@ -18,23 +18,31 @@
           <img class="profile__image" src="./images/kusto.jpg" alt="Аватар" />
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button type="button" class="profile__edit-button"></button>
+            <button
+              type="button"
+              class="profile__edit-button"
+              aria-label="Редактировать профиль"
+            ></button>
             <p class="profile__contact-info">Исследователь океана</p>
           </div>
-          <button type="button" class="profile__add-button"></button>
+          <button
+            type="button"
+            class="profile__add-button"
+            aria-label="Добавить"
+          ></button>
         </section>
 
         <section class="cards">
           <ul class="cards__content">
             <li class="card">
-              <img
-                class="card__image"
-                src="./images/ural.jpg"
-                alt="Горы"
-              />
+              <img class="card__image" src="./images/ural.jpg" alt="Горы" />
               <div class="card__info">
                 <h2 class="card__name">Уральские горы</h2>
-                <button type="button" class="card__reaction"></button>
+                <button
+                  type="button"
+                  class="card__reaction"
+                  aria-label="Нравится"
+                ></button>
               </div>
             </li>
             <li class="card">
@@ -45,29 +53,33 @@
               />
               <div class="card__info">
                 <h2 class="card__name">Великий Новгород</h2>
-                <button type="button" class="card__reaction"></button>
+                <button
+                  type="button"
+                  class="card__reaction"
+                  aria-label="Нравится"
+                ></button>
               </div>
             </li>
             <li class="card">
-              <img
-                class="card__image"
-                src="./images/elbrus.jpg"
-                alt="Гора"
-              />
+              <img class="card__image" src="./images/elbrus.jpg" alt="Гора" />
               <div class="card__info">
                 <h2 class="card__name">Гора Эльбрус</h2>
-                <button type="button" class="card__reaction"></button>
+                <button
+                  type="button"
+                  class="card__reaction"
+                  aria-label="Нравится"
+                ></button>
               </div>
             </li>
             <li class="card">
-              <img
-                class="card__image"
-                src="./images/dombai.jpg"
-                alt="Домбай"
-              />
+              <img class="card__image" src="./images/dombai.jpg" alt="Домбай" />
               <div class="card__info">
                 <h2 class="card__name">Домбай</h2>
-                <button type="button" class="card__reaction"></button>
+                <button
+                  type="button"
+                  class="card__reaction"
+                  aria-label="Нравится"
+                ></button>
               </div>
             </li>
             <li class="card">
@@ -78,7 +90,11 @@
               />
               <div class="card__info">
                 <h2 class="card__name">Озеро Байкал</h2>
-                <button type="button" class="card__reaction"></button>
+                <button
+                  type="button"
+                  class="card__reaction"
+                  aria-label="Нравится"
+                ></button>
               </div>
             </li>
             <li class="card">
@@ -89,7 +105,11 @@
               />
               <div class="card__info">
                 <h2 class="card__name">Карачаевск</h2>
-                <button type="button" class="card__reaction"></button>
+                <button
+                  type="button"
+                  class="card__reaction"
+                  aria-label="Нравится"
+                ></button>
               </div>
             </li>
           </ul>
@@ -101,23 +121,29 @@
     </div>
     <div class="popup">
       <div class="popup__content">
-        <button type="button" class="popup__close"></button>
+        <button
+          type="button"
+          class="popup__close"
+          aria-label="Закрыть"
+        ></button>
         <h2 class="popup__heading">Редактировать профиль</h2>
-        <fieldset class="popup__main-container">
-          <input
-            type="text"
-            class="popup__item"
-            name="name"
-            placeholder="Имя"
-          />
-          <input
-            type="text"
-            class="popup__item"
-            name="contact-info"
-            placeholder="О себе"
-          />
-        </fieldset>
-        <button type="submit" class="popup__save">Сохранить</button>
+        <form name="profile_edit">
+          <fieldset class="popup__main-container">
+            <input
+              type="text"
+              class="popup__item"
+              name="name"
+              placeholder="Имя"
+            />
+            <input
+              type="text"
+              class="popup__item"
+              name="contact-info"
+              placeholder="О себе"
+            />
+          </fieldset>
+          <button type="submit" class="popup__save">Сохранить</button>
+        </form>
       </div>
     </div>
   </body>
