@@ -1,6 +1,7 @@
 .card__info {
-  display: flex;
-  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 22px;
+  padding: 0 20px 22px;
   justify-content: space-between;
   align-items: center;
 }

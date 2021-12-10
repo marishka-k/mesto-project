@@ -1,6 +1,7 @@
 .popup__save {
   display: block;
-  margin: 0 auto;
+  padding: 0;
+  margin: 21px auto 0;
   width: 100%;
   height: 50px;
   border: none;
@@ -11,6 +12,7 @@
   font-size: 18px;
   line-height: 22px;
   transition: opacity .2s linear;
+  cursor: pointer;
 }
 
 .popup__save:hover {
@@ -22,5 +24,6 @@
     font-size: 14px;
     line-height: 27px;
     height: 46px;
+    margin: 15px auto 0;
   }
 }

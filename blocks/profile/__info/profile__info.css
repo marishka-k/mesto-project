@@ -12,7 +12,7 @@
   overflow: hidden;
 }
 
-@media all and (max-width: 1100px) {
+@media all and (max-width: 950px) {
   .profile__info {
     grid-template: repeat(2, 1fr) / 8% 1fr 8%;
     grid-template-areas:

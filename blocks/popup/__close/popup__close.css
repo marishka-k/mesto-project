@@ -13,9 +13,10 @@
   background-repeat: no-repeat;
   background-position: center;
   transition: opacity .2s linear;
+  cursor: pointer;
 }
 
-.card__like:hover {
+.popup__close:hover {
   opacity: .5;
 }
 

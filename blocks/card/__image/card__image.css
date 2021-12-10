@@ -1,10 +1,11 @@
-.card__foto {
+.card__image {
   max-width: 100%;
   margin-bottom: 25px;
+  object-fit: cover;
 }
 
 @media all and (max-width: 1100px) {
-  .card__foto {
+  .card__image {
     margin-bottom: 22px;
   }
 }

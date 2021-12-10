@@ -1,7 +1,7 @@
 .popup__content {
-  width: 358px;
-  height: 258px;
-  margin: 195px auto 0;
+  width: 100%;
+  max-width: 358px;
+  margin: auto;
   background-color: #fff;
   border: none;
   border-radius: 10px;
@@ -12,8 +12,6 @@
 @media all and (max-width: 1100px) {
   .popup__content {
     width: 238px;
-    height: 272px;
-    margin: 123px auto 0;
     padding: 25px 22px;
   }
 }

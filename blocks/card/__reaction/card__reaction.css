@@ -1,4 +1,4 @@
-.card__like {
+.card__reaction {
   border: none;
   background-color: inherit;
   background-image: url(../../../images/heart.svg);
@@ -7,8 +7,9 @@
   background-repeat: no-repeat;
   background-position: center;
   transition: opacity .2s linear;
+  cursor: pointer;
 }
 
-.card__like:hover {
+.card__reaction:hover {
   opacity: .5;
 }
