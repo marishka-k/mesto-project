@@ -1,6 +1,6 @@
 .profile__info {
   display: grid;
-  grid-template: repeat(2, 1fr) / 7% 1fr 7%;
+  grid-template: repeat(2, 1fr) / 24px 1fr 24px;
   grid-template-areas:
     "profile__name profile__name profile__edit-button"
     "profile__contact-info profile__contact-info .";
@@ -14,7 +14,7 @@
 
 @media all and (max-width: 950px) {
   .profile__info {
-    grid-template: repeat(2, 1fr) / 8% 1fr 8%;
+    grid-template: repeat(2, 1fr) / 18px 1fr 18px;
     grid-template-areas:
       ". profile__name profile__edit-button"
       ". profile__contact-info .";
