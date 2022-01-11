@@ -113,13 +113,14 @@
               </div>
             </li>
           </ul>
+          <script src="./script/cardreaction.js"></script>
         </section>
       </main>
       <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
       </footer>
     </div>
-    <div class="popup popup_opened">
+    <div id="popup_profile" class="popup">
       <div class="popup__content">
         <button
           type="button"
@@ -132,17 +133,47 @@
             type="text"
             class="popup__item"
             name="name"
+            id="name"
             placeholder="Имя"
           />
           <input
             type="text"
             class="popup__item"
             name="contact-info"
+            id="contact-info"
             placeholder="О себе"
           />
           <button type="submit" class="popup__save">Сохранить</button>
         </form>
       </div>
+    </div>
+    <div id="popup_cards" class="popup">
+      <div class="popup__content">
+        <button
+          type="button"
+          class="popup__close"
+          aria-label="Закрыть"
+        ></button>
+        <h2 class="popup__heading">Новое место</h2>
+        <form name="profile_edit">
+          <input
+            type="text"
+            class="popup__item"
+            name="place_name"
+            id="place_name"
+            placeholder="Название"
+          />
+          <input
+            type="url"
+            class="popup__item"
+            name="place_adres"
+            id="place_adres"
+            placeholder="Ссылка на картинку"
+          />
+          <button type="submit" class="popup__save">Создать</button>
+        </form>
+      </div>
+      <script src="./script/popupopened.js"></script>
     </div>
   </body>
 </html>
