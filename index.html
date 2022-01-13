@@ -32,88 +32,8 @@
           ></button>
         </section>
 
-        <section class="cards">
-          <ul class="cards__content">
-            <li class="card">
-              <img class="card__image" src="./images/ural.jpg" alt="Горы" />
-              <div class="card__info">
-                <h2 class="card__name">Уральские горы</h2>
-                <button
-                  type="button"
-                  class="card__reaction"
-                  aria-label="Нравится"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                class="card__image"
-                src="./images/novgorod.jpg"
-                alt="Кремль"
-              />
-              <div class="card__info">
-                <h2 class="card__name">Великий Новгород</h2>
-                <button
-                  type="button"
-                  class="card__reaction"
-                  aria-label="Нравится"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img class="card__image" src="./images/elbrus.jpg" alt="Гора" />
-              <div class="card__info">
-                <h2 class="card__name">Гора Эльбрус</h2>
-                <button
-                  type="button"
-                  class="card__reaction"
-                  aria-label="Нравится"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img class="card__image" src="./images/dombai.jpg" alt="Домбай" />
-              <div class="card__info">
-                <h2 class="card__name">Домбай</h2>
-                <button
-                  type="button"
-                  class="card__reaction"
-                  aria-label="Нравится"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                class="card__image"
-                src="./images/baikal.jpg"
-                alt="Озеро зимой"
-              />
-              <div class="card__info">
-                <h2 class="card__name">Озеро Байкал</h2>
-                <button
-                  type="button"
-                  class="card__reaction"
-                  aria-label="Нравится"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                class="card__image"
-                src="./images/karachaevsk.jpg"
-                alt="Карачаевск"
-              />
-              <div class="card__info">
-                <h2 class="card__name">Карачаевск</h2>
-                <button
-                  type="button"
-                  class="card__reaction"
-                  aria-label="Нравится"
-                ></button>
-              </div>
-            </li>
-          </ul>
-          <script src="./script/cardreaction.js"></script>
+        <section class="cards" aria-label="cards">
+          <ul class="cards__content"></ul>
         </section>
       </main>
       <footer class="footer">
@@ -125,6 +45,7 @@
         <button
           type="button"
           class="popup__close"
+          id="popup_profile-close"
           aria-label="Закрыть"
         ></button>
         <h2 class="popup__heading">Редактировать профиль</h2>
@@ -143,7 +64,7 @@
             id="contact-info"
             placeholder="О себе"
           />
-          <button type="submit" class="popup__save">Сохранить</button>
+          <button type="submit" class="popup__save" id="change-profile">Сохранить</button>
         </form>
       </div>
     </div>
@@ -152,6 +73,7 @@
         <button
           type="button"
           class="popup__close"
+          id="popup_card-close"
           aria-label="Закрыть"
         ></button>
         <h2 class="popup__heading">Новое место</h2>
@@ -170,9 +92,28 @@
             id="place_adres"
             placeholder="Ссылка на картинку"
           />
-          <button type="submit" class="popup__save">Создать</button>
+          <button type="submit" class="popup__save" id="create-card">Создать</button>
         </form>
       </div>
+      <template id="card-template">
+        <li class="card">
+          <img class="card__image" src="./images/ural.jpg" alt="Горы" />
+          <div class="card__info">
+            <h2 class="card__name"></h2>
+            <button
+              type="button"
+              class="card__reaction"
+              aria-label="Нравится"
+            ></button>
+            <button
+              type="button"
+              class="card__remove"
+              aria-label="удалить"
+            ></button>
+          </div>
+        </li>
+      </template>
+      <script src="./script/cardTemplate.js"></script>
       <script src="./script/popupopened.js"></script>
     </div>
   </body>
