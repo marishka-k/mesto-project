@@ -1,35 +1,11 @@
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
 const cards = document.querySelector(".cards");
 const profileAddButton = document.querySelector(".profile__add-button");
 const cardsContent = cards.querySelector(".cards__content");
 const popupCards = document.querySelector("#popup_cards");
 const popupCardClose = document.querySelector("#popup_card-close");
-const createCard = document.querySelector("#create-card");
+const addCardForm = popupCards.querySelector("#popup-add-card-form");
+const placeAdres = document.querySelector("#place_adres");
+const placeName = document.querySelector("#place_name");
 
 profileAddButton.addEventListener("click", function () {
   popupCards.classList.add("popup_opened");
@@ -55,16 +31,20 @@ function addCard(cardImageValue, cardNameValue) {
     .addEventListener("click", function () {
       cardElement.remove();
     });
-  cardsContent.append(cardElement);
+  return cardElement;
 }
 
-for (let i = 0; i < initialCards.length; i += 1) {
-  addCard(initialCards[i].link, initialCards[i].name);
-  }
-
-createCard.addEventListener("click", function () {
-  const placeAdres = document.querySelector("#place_adres");
-  const placeName = document.querySelector(".#place_name");
-  addCard(placeAdres.value, placeName.value);
+initialCards.forEach ((item) => {
+  cardsContent.append(addCard(item.link, item.name));  //создаем 6 карт по умолчанию
 });
+
+const submitFormNewCard = (evt) =>{
+  evt.preventDefault();  //отменяем перезагрузку при добавлении
+  cardsContent.prepend(addCard(placeAdres.value, placeName.value));
+  popupCards.classList.remove("popup_opened");
+  placeAdres.value = ''; // сброс текста в поле
+  placeName.value = ''; // сброс текста в поле
+};
+
+addCardForm.addEventListener('submit', submitFormNewCard); //отправляем форму
 
