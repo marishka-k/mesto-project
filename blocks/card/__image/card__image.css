@@ -5,6 +5,7 @@
   object-fit: cover;
   object-position: center;
   overflow: hidden;
+  cursor: -webkit-zoom-in;
 }
 
 @media all and (max-width: 1100px) {
