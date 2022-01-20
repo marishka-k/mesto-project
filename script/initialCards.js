@@ -24,12 +24,3 @@ const initialCards = [
     link: "https://images.unsplash.com/photo-1552321570-b74810c6265d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
   },
 ];
-
-const popupClose = document.querySelectorAll(".popup__close");
-
-for (let i = 0; i < popupClose.length; i += 1) {
-popupClose[i].addEventListener("click", function () {
-  (popupClose[i].parentElement).parentElement.classList.remove("popup_opened");
-});
-console.log (popupClose.length.parentElement);
-};

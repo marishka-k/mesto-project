@@ -43,15 +43,15 @@ function addCard(cardImageValue, cardNameValue) {
 }
 
 initialCards.forEach((item) => {
-  cardsContent.append(addCard(item.link, item.name)); //создаем 6 карт по умолчанию
+  cardsContent.append(addCard(item.link, item.name));
 });
 
 const submitFormNewCard = (evt) => {
-  evt.preventDefault(); //отменяем перезагрузку при добавлении
+  evt.preventDefault();
   cardsContent.prepend(addCard(placeAdres.value, placeName.value));
   popupCards.classList.remove("popup_opened");
-  placeAdres.value = ""; // сброс текста в поле
-  placeName.value = ""; // сброс текста в поле
+  placeAdres.value = "";
+  placeName.value = "";
 };
 
-addCardForm.addEventListener("submit", submitFormNewCard); //отправляем форму
+addCardForm.addEventListener("submit", submitFormNewCard);
