@@ -1,6 +1,5 @@
 const profileEditButton = document.querySelector(".profile__edit-button");
 const popupProfile = document.querySelector("#popup_profile");
-const popupProfileClose = document.querySelector("#popup_profile-close");
 const profileEditForm = document.querySelector("#popup-profile-edit-form");
 const profileName = document.querySelector(".profile__name");
 const profileContactInfo = document.querySelector(".profile__contact-info");
@@ -9,10 +8,6 @@ const contactInfoEdit = document.querySelector("#contact-info");
 
 profileEditButton.addEventListener("click", function () {
   popupProfile.classList.add("popup_opened");
-});
-
-popupProfileClose.addEventListener("click", function () {
-  popupProfile.classList.remove("popup_opened");
 });
 
 function editProfile(profileNameValue, contactInfoValue) {
