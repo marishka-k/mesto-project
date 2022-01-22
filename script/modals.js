@@ -13,9 +13,9 @@ function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
 
-closeButtons.forEach ((buttons) => {
-  buttons.addEventListener("click", function () {
-    closePopup(buttons.closest(".popup_opened"));
+closeButtons.forEach((button) => {
+  button.addEventListener("click", function () {
+    closePopup(button.closest(".popup_opened"));
   });
 });
 
