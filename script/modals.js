@@ -11,16 +11,24 @@ const contactInfoEdit = document.querySelector("#contact-info");
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closePopupWithEsc);
 }
 
-closeButtons.forEach((button) => {
-  button.addEventListener("click", function () {
-    closePopup(button.closest(".popup_opened"));
-  });
+function closePopupWithEsc(evt) {
+  if (evt.key === "Escape") {
+    closePopup(document.querySelector(".popup_opened"));
+  }
+}
+
+document.addEventListener("click", function (evt) {
+  if (evt.target.classList.contains("popup") || evt.target.classList.contains("popup__close")) {
+    closePopup(document.querySelector(".popup_opened"));
+  }
 });
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener("keydown", closePopupWithEsc);
 }
 
 profileEditButton.addEventListener("click", function () {
