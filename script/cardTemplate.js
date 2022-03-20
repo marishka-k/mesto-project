@@ -5,9 +5,8 @@ const popupImageItem = document.querySelector(".popup__image");
 const popupHeadingPlaceImage = document.querySelector(
   ".popup__heading_place_image"
 );
-const addCardForm = popupCard.querySelector("#popup-add-card-form");
-const placeAdres = document.querySelector("#place_adres");
-const placeName = document.querySelector("#place_name");
+
+
 
 function addCard(cardImageValue, cardNameValue) {
   const cardTemplate = document.querySelector("#card-template").content;
@@ -38,12 +37,3 @@ initialCards.forEach((item) => {
   cardsContent.append(addCard(item.link, item.name));
 });
 
-const submitFormNewCard = (evt) => {
-  evt.preventDefault();
-  cardsContent.prepend(addCard(placeAdres.value, placeName.value));
-  closePopup(popupCard);
-  placeAdres.value = "";
-  placeName.value = "";
-};
-
-addCardForm.addEventListener("submit", submitFormNewCard);

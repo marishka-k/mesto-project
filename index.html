@@ -49,7 +49,7 @@
           aria-label="Закрыть"
         ></button>
         <h2 class="popup__heading">Редактировать профиль</h2>
-        <form name="profile_edit" id="popup-profile-edit-form">
+        <form class="popup__form" name="profile_edit" novalidate>
           <input
             type="text"
             class="popup__item"
@@ -57,17 +57,25 @@
             id="profile_name"
             placeholder="Имя"
             value="Жак-Ив Кусто"
+            autocomplete="off"
+            minlength="2"
+            maxlength="40"
             required
           />
+          <span id="profile_name-error" class="popup__error"></span>
           <input
             type="text"
             class="popup__item"
-            name="contact-info"
-            id="contact-info"
+            name="contact_info"
+            id="contact_info"
             placeholder="О себе"
             value="Исследователь океана"
+            autocomplete="off"
+            minlength="2"
+            maxlength="200"
             required
           />
+          <span id="contact_info-error" class="popup__error"></span>
           <button type="submit" class="popup__save" id="change-profile">
             Сохранить
           </button>
@@ -83,24 +91,30 @@
           aria-label="Закрыть"
         ></button>
         <h2 class="popup__heading">Новое место</h2>
-        <form name="add_card" id="popup-add-card-form">
+        <form class="popup__form" name="add_card" novalidate>
           <input
             type="text"
             class="popup__item"
             name="place_name"
             id="place_name"
             placeholder="Название"
+            autocomplete="off"
+            minlength="2"
+            maxlength="30"
             required
           />
+          <span id="place_name-error" class="popup__error"></span>
           <input
             type="url"
             class="popup__item"
             name="place_adres"
             id="place_adres"
             placeholder="Ссылка на картинку"
+            autocomplete="off"
             required
           />
-          <button type="submit" class="popup__save" id="create-card">
+          <span id="place_adres-error" class="popup__error"></span>
+          <button type="submit" class="popup__save popup__save_disabled" id="create-card">
             Создать
           </button>
         </form>
@@ -139,5 +153,6 @@
     <script src="./script/initialCards.js" defer></script>
     <script src="./script/modals.js" defer></script>
     <script src="./script/cardTemplate.js" defer></script>
+    <script src="./script/validate.js" defer></script>
   </body>
 </html>
