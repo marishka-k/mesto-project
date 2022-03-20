@@ -54,7 +54,7 @@ function submitFormNewCard(evt) {
 }
 
 function setEventListner(formElement) {
-  const inputLists = document.querySelectorAll(".popup__item");
+  const inputLists = Array.from(formElement.querySelectorAll(".popup__item"));
   const saveButton = formElement.querySelector(".popup__save");
 
   formElement.addEventListener("submit", (e) => {

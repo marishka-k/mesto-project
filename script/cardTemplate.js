@@ -6,8 +6,6 @@ const popupHeadingPlaceImage = document.querySelector(
   ".popup__heading_place_image"
 );
 
-
-
 function addCard(cardImageValue, cardNameValue) {
   const cardTemplate = document.querySelector("#card-template").content;
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
