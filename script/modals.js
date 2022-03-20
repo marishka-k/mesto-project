@@ -3,6 +3,14 @@ const profileEditButton = document.querySelector(".profile__edit-button");
 const popupProfile = document.querySelector("#popup_profile");
 const profileAddButton = document.querySelector(".profile__add-button");
 const popupCard = document.querySelector("#popup_card");
+const profileName = document.querySelector(".profile__name");
+const profileContactInfo = document.querySelector(".profile__contact-info");
+const profileEditForm = document.forms.profile_edit;
+const profileNameEdit = profileEditForm.elements.profile_name;
+const contactInfoEdit = profileEditForm.elements.contact_info;
+const addCardForm = document.forms.add_card;
+const placeName = addCardForm.elements.place_name;
+const placeAdres = addCardForm.elements.place_adres;
 
 
 function closePopup(popup) {
@@ -37,3 +45,25 @@ profileEditButton.addEventListener("click", function () {
 profileAddButton.addEventListener("click", function () {
   openPopup(popupCard);
 });
+
+function editProfile(profileNameValue, contactInfoValue) {
+  profileName.textContent = profileNameValue;
+  profileContactInfo.textContent = contactInfoValue;
+}
+
+function submitProfileFormChange(evt) {
+  evt.preventDefault();
+  editProfile(profileNameEdit.value, contactInfoEdit.value);
+  closePopup(popupProfile);
+}
+
+function submitFormNewCard(evt) {
+  evt.preventDefault();
+  cardsContent.prepend(addCard(placeAdres.value, placeName.value));
+  closePopup(popupCard);
+  addCardForm.reset();
+}
+
+profileEditForm.addEventListener("submit", submitProfileFormChange);
+
+addCardForm.addEventListener("submit", submitFormNewCard);

@@ -1,12 +1,3 @@
-const profileName = document.querySelector(".profile__name");
-const profileContactInfo = document.querySelector(".profile__contact-info");
-const profileEditForm = document.forms.profile_edit;
-const profileNameEdit = profileEditForm.elements.profile_name;
-const contactInfoEdit = profileEditForm.elements.contact_info;
-const addCardForm = document.forms.add_card;
-const placeName = addCardForm.elements.place_name;
-const placeAdres = addCardForm.elements.place_adres;
-
 function showError(errorElement, inputElement) {
   inputElement.classList.add("popup__item_error");
   errorElement.textContent = inputElement.validationMessage;
@@ -37,35 +28,9 @@ function activateSubmitButton(button, isActive) {
   }
 }
 
-function editProfile(profileNameValue, contactInfoValue) {
-  profileName.textContent = profileNameValue;
-  profileContactInfo.textContent = contactInfoValue;
-}
-
-function submitProfileFormChange(evt) {
-  editProfile(profileNameEdit.value, contactInfoEdit.value);
-  closePopup(popupProfile);
-}
-
-function submitFormNewCard(evt) {
-  cardsContent.prepend(addCard(placeAdres.value, placeName.value));
-  closePopup(popupCard);
-  addCardForm.reset();
-}
-
 function setEventListner(formElement) {
   const inputLists = Array.from(formElement.querySelectorAll(".popup__item"));
   const saveButton = formElement.querySelector(".popup__save");
-
-  formElement.addEventListener("submit", (e) => {
-    e.preventDefault();
-    if ((formElement.id = profile_edit)) {
-      submitProfileFormChange();
-    }
-    if ((formElement.id = add_card)) {
-      submitFormNewCard();
-    }
-  });
 
   inputLists.forEach((input) => {
     input.addEventListener("input", () => {
