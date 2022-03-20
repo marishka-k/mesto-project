@@ -1,8 +1,8 @@
 .profile {
   padding: 40px 0 50px;
   display: grid;
-  grid-template: 100% / 120px 1fr 150px;
-  gap: 0 30px;
+  grid-template: 100% / 120px 1fr 17.05%;
+  gap: 0 3.41%;
 }
 
 @media all and (max-width: 950px) {

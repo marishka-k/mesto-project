@@ -4,3 +4,9 @@
   height: 120px;
   border-radius: 50%;
 }
+
+@media all and (max-width: 950px) {
+  .profile__avatar {
+    justify-self: center;
+  }
+}

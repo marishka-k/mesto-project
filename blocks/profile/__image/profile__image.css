@@ -7,9 +7,3 @@
   grid-row: 1 / 1;
 
 }
-
-@media all and (max-width: 950px) {
-  .profile__image {
-    justify-self: center;
-  }
-}
