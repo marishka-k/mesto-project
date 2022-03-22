@@ -16,6 +16,7 @@
     </header>
 
     <main class="main">
+
       <section class="profile">
         <div class="profile__avatar">
           <img class="profile__image" src="./images/kusto.jpg" alt="Аватар" />
@@ -32,6 +33,7 @@
       <section class="cards" aria-label="cards">
         <ul class="cards__content"></ul>
       </section>
+
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
@@ -59,7 +61,7 @@
     <div class="popup__content">
       <button type="button" class="popup__close" id="popup_avatar-close" aria-label="Закрыть"></button>
       <h2 class="popup__heading">Обновить аватар</h2>
-      <form class="popup__form" name="profile_avatar-edit" novalidate>
+      <form class="popup__form" name="profile_avatar_edit" novalidate>
         <input type="url" class="popup__item" name="profile_image" id="profile_image" placeholder="Ссылка на картинку"
           autocomplete="off" required />
         <span id="profile_image-error" class="popup__error"></span>
