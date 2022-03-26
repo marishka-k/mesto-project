@@ -5,21 +5,20 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./pages/index.css" />
   <title>Проект: Место</title>
 </head>
 
 <body class="page">
   <div class="content">
     <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="Mesto Russia" />
+      <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Mesto Russia" />
     </header>
 
     <main class="main">
 
       <section class="profile">
         <div class="profile__avatar">
-          <img class="profile__image" src="./images/kusto.jpg" alt="Аватар" />
+          <img class="profile__image" src="<%=require('./images/kusto.jpg')%>" alt="Аватар" />
           <button type="button" class="profile__avatar-button" aria-label="Изменить аватар"></button>
         </div>
         <div class="profile__info">
@@ -106,10 +105,6 @@
       </div>
     </li>
   </template>
-  <script type="module" src="./src/components/index.js"></script>
-  <script type="module" src="./src/components/modals.js"></script>
-  <script type="module" src="./src/components/cardTemplate.js"></script>
-  <script type="module" src="./src/components/validate.js"></script>
-</body>
+  </body>
 
 </html>

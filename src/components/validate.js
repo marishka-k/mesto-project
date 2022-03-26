@@ -40,11 +40,9 @@ function setEventListner(formElement) {
   });
 }
 
-function enableValidation() {
+export function enableValidation() {
   const forms = document.querySelectorAll(".popup__form");
   forms.forEach((form) => {
     setEventListner(form);
   });
 }
-
-enableValidation();

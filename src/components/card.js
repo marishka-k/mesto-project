@@ -1,4 +1,4 @@
-import { openPopup } from "./modals.js";
+import { openPopup } from "./modal.js";
 
 const popupImage = document.querySelector("#popup_image");
 const popupImageItem = document.querySelector(".popup__image");

@@ -1,3 +1,18 @@
+export const profileEditButton = document.querySelector(".profile__edit-button");
+export const popupProfile = document.querySelector("#popup_profile");
+export const cardsContent = document.querySelector(".cards__content");
+export const profileAvatarButton = document.querySelector(".profile__avatar-button");
+export const popupAvatar = document.querySelector("#popup_avatar");
+export const profileAddButton = document.querySelector(".profile__add-button");
+export const popupCard = document.querySelector("#popup_card");
+export const profileEditForm = document.forms.profile_edit;
+export const profileNameEdit = profileEditForm.elements.profile_name;
+export const contactInfoEdit = profileEditForm.elements.contact_info;
+export const profileAvtarEditForm = document.forms.profile_avatar_edit;
+export const profileImageEdit = profileAvtarEditForm.elements.profile_image;
+export const addCardForm = document.forms.add_card;
+export const placeAdres = addCardForm.elements.place_adres;
+
 export const initialCards = [
   {
     name: "Эльбрус",

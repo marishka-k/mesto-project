@@ -1,23 +1,14 @@
-import { openPopup, closePopup } from "./modals.js";
-import { addCard } from "./cardTemplate.js";
-import { initialCards } from "./initialCards.js";
+import { openPopup, closePopup } from "./modal.js";
+import { addCard } from "./card.js";
+import { profileEditButton, popupProfile, cardsContent, profileAvatarButton,
+  popupAvatar, profileAddButton, popupCard, profileEditForm, profileNameEdit, contactInfoEdit,
+  profileAvtarEditForm, profileImageEdit, addCardForm, placeAdres, initialCards } from "./constants";
+import {enableValidation} from "./validate"
+import '../styles/index.css';
 
-const cards = document.querySelector(".cards");
-const cardsContent = cards.querySelector(".cards__content");
-const profileEditButton = document.querySelector(".profile__edit-button");
-const popupProfile = document.querySelector("#popup_profile");
-const profileAvatarButton = document.querySelector(".profile__avatar-button");
-const popupAvatar = document.querySelector("#popup_avatar");
-const profileAddButton = document.querySelector(".profile__add-button");
-const popupCard = document.querySelector("#popup_card");
-const profileEditForm = document.forms.profile_edit;
-const profileNameEdit = profileEditForm.elements.profile_name;
-const contactInfoEdit = profileEditForm.elements.contact_info;
-const profileAvtarEditForm = document.forms.profile_avatar_edit;
-const profileImageEdit = profileAvtarEditForm.elements.profile_image;
-const addCardForm = document.forms.add_card;
-const placeName = addCardForm.elements.place_name;
-const placeAdres = addCardForm.elements.place_adres;
+
+
+enableValidation();
 
 // открыть попап "обновить аватар"
 profileAvatarButton.addEventListener("click", function () {
