@@ -1,7 +1,7 @@
-import { openPopup, closePopup } from "./modal.js";
-import { deleteCardForm, popupImage, popupDelete, popupImageItem, popupHeadingPlaceImage } from "./constants";
+import { openPopup } from "./modal.js";
+import { popupImage, popupImageItem, popupHeadingPlaceImage, popupDelete, deleteCardForm } from "./constants";
 
-export function addCard (cardImageValue, cardNameValue) {
+export function addCard(cardImageValue, cardNameValue) {
   const cardTemplate = document.querySelector("#card-template").content;
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
@@ -23,17 +23,17 @@ export function addCard (cardImageValue, cardNameValue) {
     evt.target.classList.toggle("card__reaction_active");
   });
 
-  function deleteCard () {
-    deleteCardForm.addEventListener("submit", function (evt) {
-      evt.preventDefault();
-      cardElement.remove();
-      closePopup(popupDelete);
-    });
-  }
-
   cardRemove.addEventListener("click", function () {
     openPopup(popupDelete);
-    deleteCard();
+    cardElement.classList.add("card_target_delete");
+  });
+
+  deleteCardForm.addEventListener("submit", function (evt) {
+    evt.preventDefault();
+    if (cardElement.classList.contains("card_target_delete")) {
+      cardElement.remove();
+    }
+    popupDelete.classList.remove("popup_opened");
   });
 
   return cardElement;

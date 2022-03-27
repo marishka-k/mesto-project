@@ -12,12 +12,23 @@ export const popupHeadingPlaceImage = document.querySelector(".popup__heading_pl
 export const profileEditForm = document.forms.profile_edit;
 export const profileNameEdit = profileEditForm.elements.profile_name;
 export const contactInfoEdit = profileEditForm.elements.contact_info;
-export const profileAvtarEditForm = document.forms.profile_avatar_edit;
-export const profileImageEdit = profileAvtarEditForm.elements.profile_image;
+export const profileAvatarEditForm = document.forms.profile_avatar_edit;
+export const profileImageEdit = profileAvatarEditForm.elements.profile_image;
+export const changeAvatarButton = profileAvatarEditForm.elements.change_avatar;
 export const addCardForm = document.forms.add_card;
 export const placeAdres = addCardForm.elements.place_adres;
 export const placeName = addCardForm.elements.place_name;
+export const createCardButton = addCardForm.elements.create_card;
 export const deleteCardForm = document.forms.delete_card;
+
+export const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__item',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__item_error'
+};
+
 
 export const initialCards = [
   {
