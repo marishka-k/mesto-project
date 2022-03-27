@@ -1,4 +1,4 @@
-import { openPopup, closePopup } from "./modal.js";
+import { openPopup, closePopup, closePopupImage } from "./modal.js";
 import { addCard } from "./card.js";
 import { profileEditButton, popupProfile, cardsContent, profileAvatarButton,
   popupAvatar, profileAddButton, popupCard, profileEditForm, profileNameEdit, contactInfoEdit,
@@ -6,8 +6,12 @@ import { profileEditButton, popupProfile, cardsContent, profileAvatarButton,
 import {enableValidation} from "./validate"
 import '../styles/index.css';
 
+//создание массива карточек
+initialCards.forEach((item) => {
+  cardsContent.append(addCard(item.link, item.name));
+});
 
-
+//запуск вылидации полей
 enableValidation();
 
 // открыть попап "обновить аватар"
@@ -58,8 +62,3 @@ profileEditForm.addEventListener("submit", submitProfileFormChange);
 profileAvtarEditForm.addEventListener("submit", submitProfileAvatarChange);
 
 addCardForm.addEventListener("submit", submitFormNewCard);
-
-//создание массива карточек
-initialCards.forEach((item) => {
-  cardsContent.append(addCard(item.link, item.name));
-});
