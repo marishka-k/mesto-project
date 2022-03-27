@@ -2,7 +2,7 @@ import { openPopup, closePopup } from "./modal.js";
 import { addCard } from "./card.js";
 import { profileEditButton, popupProfile, cardsContent, profileAvatarButton,
   popupAvatar, profileAddButton, popupCard, profileEditForm, profileNameEdit, contactInfoEdit,
-  profileAvtarEditForm, profileImageEdit, addCardForm, placeAdres, initialCards } from "./constants";
+  profileAvtarEditForm, profileImageEdit, addCardForm, placeName, placeAdres, initialCards } from "./constants";
 import {enableValidation} from "./validate"
 import '../styles/index.css';
 

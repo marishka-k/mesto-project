@@ -12,6 +12,8 @@ export const profileAvtarEditForm = document.forms.profile_avatar_edit;
 export const profileImageEdit = profileAvtarEditForm.elements.profile_image;
 export const addCardForm = document.forms.add_card;
 export const placeAdres = addCardForm.elements.place_adres;
+export const placeName = addCardForm.elements.place_name;
+export const deleteCardForm = document.forms.delete_card;
 
 export const initialCards = [
   {

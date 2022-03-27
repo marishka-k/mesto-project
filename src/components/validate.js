@@ -20,22 +20,22 @@ function checkInputValidity(inputElement, formElement) {
 
 function activateSubmitButton(button, isActive) {
   if (isActive) {
-    button.classList.remove("popup__save_disabled");
+    button.classList.remove("popup__button_disabled");
     button.disabled = false;
   } else {
-    button.classList.add("popup__save_disabled");
+    button.classList.add("popup__button_disabled");
     button.disabled = "disabled";
   }
 }
 
 function setEventListner(formElement) {
   const inputLists = Array.from(formElement.querySelectorAll(".popup__item"));
-  const saveButton = formElement.querySelector(".popup__save");
+  const popupButton = formElement.querySelector(".popup__button");
 
   inputLists.forEach((input) => {
     input.addEventListener("input", () => {
       checkInputValidity(input, formElement);
-      activateSubmitButton(saveButton, formElement.checkValidity());
+      activateSubmitButton(popupButton, formElement.checkValidity());
     });
   });
 }

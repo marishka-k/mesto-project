@@ -1,6 +1,8 @@
-import { openPopup } from "./modal.js";
+import { openPopup, closePopup } from "./modal.js";
+import { deleteCardForm } from "./constants";
 
 const popupImage = document.querySelector("#popup_image");
+const popupDelete = document.querySelector("#popup_delete");
 const popupImageItem = document.querySelector(".popup__image");
 const popupHeadingPlaceImage = document.querySelector(
   ".popup__heading_place_image"
@@ -28,8 +30,17 @@ export function addCard (cardImageValue, cardNameValue) {
     evt.target.classList.toggle("card__reaction_active");
   });
 
+  function deleteCard () {
+    deleteCardForm.addEventListener("submit", function (evt) {
+      evt.preventDefault();
+      cardElement.remove();
+      closePopup(popupDelete);
+    });
+  }
+
   cardRemove.addEventListener("click", function () {
-    cardElement.remove();
+    openPopup(popupDelete);
+    deleteCard();
   });
 
   return cardElement;
