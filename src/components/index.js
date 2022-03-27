@@ -1,4 +1,4 @@
-import { openPopup, closePopup, closePopupImage } from "./modal.js";
+import { openPopup, closePopup } from "./modal.js";
 import { addCard } from "./card.js";
 import { profileEditButton, popupProfile, cardsContent, profileAvatarButton,
   popupAvatar, profileAddButton, popupCard, profileEditForm, profileNameEdit, contactInfoEdit,

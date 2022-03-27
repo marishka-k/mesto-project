@@ -8,9 +8,7 @@ export const popupCard = document.querySelector("#popup_card");
 export const popupImage = document.querySelector("#popup_image");
 export const popupDelete = document.querySelector("#popup_delete");
 export const popupImageItem = document.querySelector(".popup__image");
-export const popupHeadingPlaceImage = document.querySelector(
-  ".popup__heading_place_image"
-);
+export const popupHeadingPlaceImage = document.querySelector(".popup__heading_place_image");
 export const profileEditForm = document.forms.profile_edit;
 export const profileNameEdit = profileEditForm.elements.profile_name;
 export const contactInfoEdit = profileEditForm.elements.contact_info;
