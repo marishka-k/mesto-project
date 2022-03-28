@@ -50,6 +50,7 @@ function submitProfileAvatarChange(evt) {
   profileImage.src = profileImageEdit.value;
   closePopup(popupAvatar);
   changeAvatarButton.classList.add("popup__button_disabled");
+  changeAvatarButton.disabled = "disabled";
   profileAvatarEditForm.reset();
 }
 
@@ -58,6 +59,7 @@ function submitFormNewCard(evt) {
   cardsContent.prepend(addCard(placeAdres.value, placeName.value));
   closePopup(popupCard);
   createCardButton.classList.add("popup__button_disabled");
+  createCardButton.disabled = "disabled"
   addCardForm.reset();
 }
 

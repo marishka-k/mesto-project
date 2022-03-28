@@ -64,7 +64,7 @@
         <input type="url" class="popup__item" name="profile_image" id="profile_image" placeholder="Ссылка на картинку"
           autocomplete="off" required />
         <span id="profile_image-error" class="popup__error"></span>
-        <button type="submit" class="popup__button popup__button_disabled" id="change-profile-image" name="change_avatar" >Сохранить</button>
+        <button type="submit" class="popup__button popup__button_disabled" id="change-profile-image" name="change_avatar" disabled >Сохранить</button>
       </form>
     </div>
   </div>
@@ -80,7 +80,7 @@
         <input type="url" class="popup__item" name="place_adres" id="place_adres" placeholder="Ссылка на картинку"
           autocomplete="off" required />
         <span id="place_adres-error" class="popup__error"></span>
-        <button type="submit" class="popup__button popup__button_disabled" id="create-card" name="create_card" >Создать</button>
+        <button type="submit" class="popup__button popup__button_disabled" id="create-card" name="create_card" disabled >Создать</button>
       </form>
     </div>
   </div>
@@ -89,16 +89,6 @@
       <button type="button" class="popup__close" id="popup_image-close" aria-label="Закрыть"></button>
       <img src="#" alt="#" class="popup__image" />
       <h2 class="popup__heading popup__heading_place_image">#</h2>
-    </div>
-  </div>
-
-  <div id="popup_delete" class="popup">
-    <div class="popup__content popup__content_place_delete">
-      <button type="button" class="popup__close" id="popup_delete-close" aria-label="Закрыть"></button>
-      <h2 class="popup__heading">Вы уверены?</h2>
-      <form class="popup__form" name="delete_card" novalidate>
-        <button type="submit" class="popup__button" id="delete_card">Да</button>
-      </form>
     </div>
   </div>
 

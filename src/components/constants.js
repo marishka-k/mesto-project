@@ -6,7 +6,6 @@ export const popupAvatar = document.querySelector("#popup_avatar");
 export const profileAddButton = document.querySelector(".profile__add-button");
 export const popupCard = document.querySelector("#popup_card");
 export const popupImage = document.querySelector("#popup_image");
-export const popupDelete = document.querySelector("#popup_delete");
 export const popupImageItem = document.querySelector(".popup__image");
 export const popupHeadingPlaceImage = document.querySelector(".popup__heading_place_image");
 export const profileEditForm = document.forms.profile_edit;
@@ -19,7 +18,6 @@ export const addCardForm = document.forms.add_card;
 export const placeAdres = addCardForm.elements.place_adres;
 export const placeName = addCardForm.elements.place_name;
 export const createCardButton = addCardForm.elements.create_card;
-export const deleteCardForm = document.forms.delete_card;
 
 export const validationConfig = {
   formSelector: '.popup__form',
