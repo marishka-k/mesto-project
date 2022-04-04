@@ -10,21 +10,20 @@ import {getCardsArray, addCardToServer, getProfileInfotmation, editProfileInform
 import {renderLoading} from "./utils"
 import '../styles/index.css';
 
-getProfileInfotmation()
-.then ((dataFromServer) => {
-  editProfile(dataFromServer.name, dataFromServer.about)
-  profileImage.src = dataFromServer.avatar;
-})
+export let userId =""
 
-getCardsArray ()
-.then((cards) => {
-  cards.forEach((card) => {
+Promise.all([getProfileInfotmation(), getCardsArray()])
+  .then(([userData, cards]) => {
+    editProfile(userData.name, userData.about)
+    profileImage.src = userData.avatar;
+    userId = userData._id;
+    cards.forEach((card) => {
       cardsContent.append(addCard(card));
     });
-})
-.catch((err) => {
-  return Promise.reject(`Ошибка: ${err.status}`);
-})
+  })
+  .catch((err) => {
+    return Promise.reject(`Ошибка: ${err.status}`);
+  })
 
 //запуск вылидации полей
 enableValidation(validationConfig);

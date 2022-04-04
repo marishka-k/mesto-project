@@ -1,4 +1,5 @@
 import { openPopup } from "./modal.js";
+import { userId } from "./index.js";
 import {
   popupImage,
   popupImageItem,
@@ -19,11 +20,11 @@ export function addCard(card) {
   cardImage.alt = card.name;
   cardLikeQuantity.textContent = card.likes.length;
 
-  if (card.owner._id === "c80d39249f04c8d4745b6228") {
+  if (card.owner._id === userId) {
     cardRemove.classList.add("card__remove_active");
   }
 
-   if (card.likes.find (like => like._id === "c80d39249f04c8d4745b6228")) {
+   if (card.likes.find (like => like._id === userId)) {
     cardReaction.classList.add("card__reaction_active")
   }
 
@@ -36,19 +37,19 @@ export function addCard(card) {
 
   cardReaction.addEventListener("click", function (evt) {
     if (evt.target.classList.contains("card__reaction_active")) {
-      evt.target.classList.remove("card__reaction_active");
       removeLike(card._id)
         .then((card) => {
           cardLikeQuantity.textContent = card.likes.length;
+          evt.target.classList.remove("card__reaction_active");
         })
         .catch((err) => {
           return Promise.reject(`Ошибка: ${err.status}`);
         });
     } else {
-      evt.target.classList.add("card__reaction_active");
       addLike(card._id)
         .then((card) => {
           cardLikeQuantity.textContent = card.likes.length;
+          evt.target.classList.add("card__reaction_active");
         })
         .catch((err) => {
           return Promise.reject(`Ошибка: ${err.status}`);
