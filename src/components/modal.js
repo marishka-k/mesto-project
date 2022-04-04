@@ -6,6 +6,10 @@ export function openPopup(popup) {
 }
 
 export function closePopup(popup) {
+  const cardDeletTarget = document.querySelector(".card_target_delete");
+  if (cardDeletTarget) {
+    cardDeletTarget.classList.remove("card_target_delete");
+  }
   popup.classList.remove("popup_opened");
   document.removeEventListener("keydown", closePopupWithEsc);
 }

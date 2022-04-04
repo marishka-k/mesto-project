@@ -20,9 +20,12 @@
 @import url(../blocks/card/__image/card__image.css);
 @import url(../blocks/card/__info/card__info.css);
 @import url(../blocks/card/__name/card__name.css);
+@import url(../blocks/card/__like-block/card__like-block.css);
+@import url(../blocks/card/__like-quantity/card__like-quantity.css);
 @import url(../blocks/card/__reaction/card__reaction.css);
 @import url(../blocks/card/__reaction/_active/card__reaction_active.css);
 @import url(../blocks/card/__remove/card__remove.css);
+@import url(../blocks/card/__remove/_active/card__remove_active.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/popup/popup.css);
