@@ -5,7 +5,9 @@ import {
   popupImageItem,
   popupHeadingPlaceImage,
 } from "./constants";
-import { removeCardToServer, addLike, removeLike } from "./api";
+// import { removeCardToServer, addLike, removeLike } from "./api";
+import { api } from "./api";
+
 
 export function addCard(card) {
   const cardTemplate = document.querySelector("#card-template").content;
@@ -37,7 +39,7 @@ export function addCard(card) {
 
   cardReaction.addEventListener("click", function (evt) {
     if (evt.target.classList.contains("card__reaction_active")) {
-      removeLike(card._id)
+      api.removeLike(card._id)
         .then((card) => {
           cardLikeQuantity.textContent = card.likes.length;
           evt.target.classList.remove("card__reaction_active");
@@ -46,7 +48,7 @@ export function addCard(card) {
           return Promise.reject(`Ошибка: ${err.status}`);
         });
     } else {
-      addLike(card._id)
+      api.addLike(card._id)
         .then((card) => {
           cardLikeQuantity.textContent = card.likes.length;
           evt.target.classList.add("card__reaction_active");
@@ -58,7 +60,7 @@ export function addCard(card) {
   });
 
   cardRemove.addEventListener("click", function () {
-    removeCardToServer(card._id)
+    api.removeCardToServer(card._id)
       .then((dataFromServer) => {
         cardElement.remove();
       })

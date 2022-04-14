@@ -6,13 +6,15 @@ import { profileEditButton, popupProfile, cardsContent, profileAvatarButton, pop
          changeAvatarButton, changeProfileButton, createCardButton, validationConfig, profileName,
          profileContactInfo, profileImage } from "./constants";
 import {enableValidation} from "./validate"
-import {getCardsArray, addCardToServer, getProfileInfotmation, editProfileInformation, editProfileAvatar} from "./api"
+/*import {getCardsArray, addCardToServer, getProfileInfotmation, editProfileInformation, editProfileAvatar} from "./api"*/
+import { api } from "./api"
+
 import {renderLoading} from "./utils"
 import '../styles/index.css';
 
 export let userId =""
 
-Promise.all([getProfileInfotmation(), getCardsArray()])
+Promise.all([api.getProfileInfotmation(), api.getCardsArray()])
   .then(([userData, cards]) => {
     editProfile(userData.name, userData.about)
     profileImage.src = userData.avatar;
@@ -67,7 +69,7 @@ function submitProfileFormChange(evt) {
 function submitProfileAvatarChange(evt) {
   evt.preventDefault();
   renderLoading (true, changeAvatarButton)
-  editProfileAvatar ({avatar: profileImageEdit.value})
+  api.editProfileAvatar ({avatar: profileImageEdit.value})
     .then ((dataFromServer) => {
       profileImage.src = dataFromServer.avatar;
       closePopup(popupAvatar);
