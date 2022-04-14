@@ -7,14 +7,13 @@ import {
 } from "./constants";
 // import { removeCardToServer, addLike, removeLike } from "./api";
 import { api } from "./api";
-
-
-class Card {
+export class Card {
   constructor(data, selector) {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
     this._owner = data.owner;
+    this.__id = data._id;
   }
 
   _getElement() {
@@ -64,9 +63,49 @@ class Card {
       popupHeadingPlaceImage.textContent = this._name;
     });
   }
+
+  _chageCardLikes () {
+  const cardReaction = this._element.querySelector(".card__reaction");
+  const cardLikeQuantity = this._element.querySelector(".card__like-quantity");
+    cardReaction.addEventListener("click", function (evt) {
+    if (evt.target.classList.contains("card__reaction_active")) {
+      api.removeLike(this.__id)
+        .then((card) => {
+          cardLikeQuantity.textContent = card.likes.length;
+          evt.target.classList.remove("card__reaction_active");
+        })
+        .catch((err) => {
+          return Promise.reject(`Ошибка: ${err.status}`);
+        });
+    } else {
+      api.addLike(this.__id)
+        .then((card) => {
+          cardLikeQuantity.textContent = card.likes.length;
+          evt.target.classList.add("card__reaction_active");
+        })
+        .catch((err) => {
+          return Promise.reject(`Ошибка: ${err.status}`);
+        });
+    }
+  });
+  }
+
+_removeCard () {
+  const cardRemove = this._element.querySelector(".card__remove");
+  cardRemove.addEventListener("click", function () {
+    api.removeCardToServer(this.__id)
+      .then((dataFromServer) => {
+        this._element.remove();
+      })
+      .catch((err) => {
+        return Promise.reject(`Ошибка: ${err.status}`);
+      });
+  });
 }
-/*
-export function addCard(card) {
+
+}
+
+/* export function addCard(card) {
     const cardTemplate = document.querySelector("#card-template").content;
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
    const cardImage = cardElement.querySelector(".card__image");
@@ -77,23 +116,23 @@ export function addCard(card) {
    cardName.textContent = card.name;
    cardImage.src = card.link;
   cardImage.alt = card.name;
-    cardLikeQuantity.textContent = card.likes.length; */
+    cardLikeQuantity.textContent = card.likes.length;
 
-  /*  if (card.owner._id === userId) {
+  if (card.owner._id === userId) {
     cardRemove.classList.add("card__remove_active");
-  } */
+  }
 
-  /* if (card.likes.find((like) => like._id === userId)) {
+  if (card.likes.find((like) => like._id === userId)) {
     cardReaction.classList.add("card__reaction_active");
-  } */
+  }
 
-  /* cardImage.addEventListener("click", function () {
+ cardImage.addEventListener("click", function () {
     openPopup(popupImage);
     popupImageItem.src = card.link;
     popupImageItem.alt = card.name;
     popupHeadingPlaceImage.textContent = card.name;
   });
- */
+
 
   cardReaction.addEventListener("click", function (evt) {
     if (evt.target.classList.contains("card__reaction_active")) {
@@ -127,5 +166,7 @@ export function addCard(card) {
       });
   });
 
-  return cardElement;
+    return cardElement;
 }
+ */
+

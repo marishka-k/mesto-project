@@ -1,5 +1,5 @@
 import { openPopup, closePopup } from "./modal";
-import { addCard } from "./card";
+import { Card } from "./card";
 import { profileEditButton, popupProfile, cardsContent, profileAvatarButton, popupAvatar,
          profileAddButton, popupCard, profileEditForm, profileNameEdit, contactInfoEdit,
          profileAvatarEditForm, profileImageEdit, addCardForm, placeName, placeAdres,
@@ -20,7 +20,7 @@ Promise.all([api.getProfileInfotmation(), api.getCardsArray()])
     profileImage.src = userData.avatar;
     userId = userData._id;
     cards.forEach((card) => {
-      cardsContent.append(addCard(card));
+      cardsContent.append(Card.generate(card));
     });
   })
   .catch((err) => {
