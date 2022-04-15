@@ -8,19 +8,16 @@ import {
 // import { removeCardToServer, addLike, removeLike } from "./api";
 import { api } from "./api";
 export class Card {
-  constructor(data, selector) {
+  constructor(data) {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
     this._owner = data.owner;
-    this.__id = data._id;
+    this._id = data._id;
   }
 
   _getElement() {
-    const cardElement = document
-      .querySelector("#card-template")
-      .content.querySelector(".card")
-      .cloneNode(true);
+    const cardElement = document.querySelector("#card-template").content.querySelector(".card").cloneNode(true);
     return cardElement;
   }
 
@@ -28,12 +25,14 @@ export class Card {
     this._element = this._getElement();
     this._handleAddBasket();
     this._findUserLikes();
+    this._openPopupImage();
+    this._chageCardLikes();
+    this._removeCard();
 
     this._element.querySelector(".card__name").textContent = this._name;
     this._element.querySelector(".card__image").src = this._link;
     this._element.querySelector(".card__image").alt = this._name;
-    this._element.querySelector(".card__like-quantity").textContent =
-      this._likes.length;
+    this._element.querySelector(".card__like-quantity").textContent = this._likes.length;
 
     return this._element;
   }
@@ -67,9 +66,9 @@ export class Card {
   _chageCardLikes () {
   const cardReaction = this._element.querySelector(".card__reaction");
   const cardLikeQuantity = this._element.querySelector(".card__like-quantity");
-    cardReaction.addEventListener("click", function (evt) {
+    cardReaction.addEventListener("click", (evt) => {
     if (evt.target.classList.contains("card__reaction_active")) {
-      api.removeLike(this.__id)
+      api.removeLike(this._id)
         .then((card) => {
           cardLikeQuantity.textContent = card.likes.length;
           evt.target.classList.remove("card__reaction_active");
@@ -78,7 +77,7 @@ export class Card {
           return Promise.reject(`Ошибка: ${err.status}`);
         });
     } else {
-      api.addLike(this.__id)
+      api.addLike(this._id)
         .then((card) => {
           cardLikeQuantity.textContent = card.likes.length;
           evt.target.classList.add("card__reaction_active");
@@ -90,18 +89,18 @@ export class Card {
   });
   }
 
-_removeCard () {
-  const cardRemove = this._element.querySelector(".card__remove");
-  cardRemove.addEventListener("click", function () {
-    api.removeCardToServer(this.__id)
-      .then((dataFromServer) => {
-        this._element.remove();
-      })
-      .catch((err) => {
-        return Promise.reject(`Ошибка: ${err.status}`);
-      });
-  });
-}
+  _removeCard () {
+    const cardRemove = this._element.querySelector(".card__remove");
+    cardRemove.addEventListener("click", () => {
+      api.removeCardToServer(this._id)
+        .then(() => {
+          this._element.remove();
+        })
+        .catch((err) => {
+          return Promise.reject(`Ошибка: ${err.status}`);
+        });
+    });
+  }
 
 }
 

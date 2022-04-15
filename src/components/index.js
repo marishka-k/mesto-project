@@ -19,8 +19,10 @@ Promise.all([api.getProfileInfotmation(), api.getCardsArray()])
     editProfile(userData.name, userData.about)
     profileImage.src = userData.avatar;
     userId = userData._id;
-    cards.forEach((card) => {
-      cardsContent.append(Card.generate(card));
+    cards.forEach((item) => {
+      const card = new Card(item);
+      const cardElement = card.generate();
+      cardsContent.append(cardElement);
     });
   })
   .catch((err) => {
@@ -31,19 +33,19 @@ Promise.all([api.getProfileInfotmation(), api.getCardsArray()])
 enableValidation(validationConfig);
 
 // открыть попап "обновить аватар"
-profileAvatarButton.addEventListener("click", function () {
+profileAvatarButton.addEventListener("click", () => {
   openPopup(popupAvatar);
 });
 
 // открыть попап "редактировать профиль"
-profileEditButton.addEventListener("click", function () {
+profileEditButton.addEventListener("click", () => {
   profileNameEdit.value = profileName.textContent
   contactInfoEdit.value = profileContactInfo.textContent
   openPopup(popupProfile);
 });
 
 // открыть попап "новое место"
-profileAddButton.addEventListener("click", function () {
+profileAddButton.addEventListener("click", () => {
   openPopup(popupCard);
 });
 
@@ -87,9 +89,11 @@ function submitProfileAvatarChange(evt) {
 function submitFormNewCard(evt) {
   evt.preventDefault();
   renderLoading (true, createCardButton)
-  addCardToServer({link: placeAdres.value, name: placeName.value})
+  api.addCardToServer({link: placeAdres.value, name: placeName.value})
   .then ((dataFromServer) => {
-    cardsContent.prepend(addCard(dataFromServer));
+    const card = new Card(dataFromServer);
+    const cardElement = card.generate();
+    cardsContent.prepend(cardElement);
     closePopup(popupCard);
     createCardButton.classList.add("popup__button_disabled");
     createCardButton.disabled = "disabled"
