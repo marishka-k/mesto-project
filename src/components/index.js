@@ -57,7 +57,7 @@ function editProfile(profileNameValue, contactInfoValue) {
 function submitProfileFormChange(evt) {
   evt.preventDefault();
   renderLoading (true, changeProfileButton)
-  editProfileInformation ({name: profileNameEdit.value, about: contactInfoEdit.value })
+  api.editProfileInformation ({name: profileNameEdit.value, about: contactInfoEdit.value })
     .then ((dataFromServer) => {
       editProfile(dataFromServer.name, dataFromServer.about);
       closePopup(popupProfile);
