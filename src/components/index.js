@@ -5,9 +5,9 @@ import { profileEditButton, popupProfile, cardsContent, profileAvatarButton, pop
          profileAvatarEditForm, profileImageEdit, addCardForm, placeName, placeAdres,
          changeAvatarButton, changeProfileButton, createCardButton, validationConfig, profileName,
          profileContactInfo, profileImage } from "./constants";
-import {enableValidation} from "./validate"
+import FormValidator from "./FormValidator"
 /*import {getCardsArray, addCardToServer, getProfileInfotmation, editProfileInformation, editProfileAvatar} from "./api"*/
-import { api } from "./api"
+import {api} from "./api"
 
 import {renderLoading} from "./utils"
 import '../styles/index.css';

@@ -36,4 +36,24 @@ export default class FormValidator {
       button.disabled = "disabled";
     }
   }
+
+  _setEventListner(formElement) {
+    const inputLists = Array.from(formElement.querySelectorAll(this._inputSelector));
+    const popupButton = formElement.querySelector(this._submitButtonSelector);
+
+    inputLists.forEach((input) => {
+      input.addEventListener("input", () => {
+        this._checkInputValidity(input, formElement);
+        this._activateSubmitButton(popupButton, formElement.checkValidity());
+      });
+    });
+  }
+
+  enableValidation() {
+    const forms = document.querySelectorAll(this._formSelector);
+    forms.forEach((form) => {
+      this._setEventListner(form);
+    });
+  }
+
 }
