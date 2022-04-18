@@ -55,5 +55,4 @@ export default class FormValidator {
       this._setEventListner(form);
     });
   }
-
 }

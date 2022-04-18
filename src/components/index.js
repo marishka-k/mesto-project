@@ -6,13 +6,16 @@ import { profileEditButton, popupProfile, cardsContent, profileAvatarButton, pop
          changeAvatarButton, changeProfileButton, createCardButton, validationConfig, profileName,
          profileContactInfo, profileImage } from "./constants";
 import FormValidator from "./FormValidator"
-/*import {getCardsArray, addCardToServer, getProfileInfotmation, editProfileInformation, editProfileAvatar} from "./api"*/
 import {api} from "./api"
 
 import {renderLoading} from "./utils"
 import '../styles/index.css';
 
 export let userId =""
+
+// ЭКЗЕМПЛЯР запуск валидации полей
+const formValidator = new FormValidator({validationConfig}, '.popup__form');
+formValidator.enableValidation();
 
 Promise.all([api.getProfileInfotmation(), api.getCardsArray()])
   .then(([userData, cards]) => {
@@ -28,9 +31,6 @@ Promise.all([api.getProfileInfotmation(), api.getCardsArray()])
   .catch((err) => {
     return Promise.reject(`Ошибка: ${err.status}`);
   })
-
-//запуск вылидации полей
-enableValidation(validationConfig);
 
 // открыть попап "обновить аватар"
 profileAvatarButton.addEventListener("click", () => {
