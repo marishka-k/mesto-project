@@ -15,7 +15,7 @@ class Api {
   }
 
   editProfileInformation(profileInformation) {
-    return fetch(`${this.baseUrl}/users/me`, {
+    return fetch(`${this.url}/users/me`, {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify(profileInformation),
