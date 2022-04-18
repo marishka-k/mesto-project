@@ -26,4 +26,14 @@ export default class FormValidator {
       this._hideError(_errorElement, inputElement);
     }
   }
+
+  _activateSubmitButton(button, isActive) {
+    if (isActive) {
+      button.classList.remove(this._inactiveButtonClass);
+      button.disabled = false;
+    } else {
+      button.classList.add(this._inactiveButtonClass);
+      button.disabled = "disabled";
+    }
+  }
 }

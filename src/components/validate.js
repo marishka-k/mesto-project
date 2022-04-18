@@ -18,15 +18,15 @@ function hideError(errorElement, inputElement, config) {
 //   }
 // }
 
-function activateSubmitButton(button, isActive, config) {
-  if (isActive) {
-    button.classList.remove(config.inactiveButtonClass);
-    button.disabled = false;
-  } else {
-    button.classList.add(config.inactiveButtonClass);
-    button.disabled = "disabled";
-  }
-}
+// function activateSubmitButton(button, isActive, config) {
+//   if (isActive) {
+//     button.classList.remove(config.inactiveButtonClass);
+//     button.disabled = false;
+//   } else {
+//     button.classList.add(config.inactiveButtonClass);
+//     button.disabled = "disabled";
+//   }
+// }
 
 function setEventListner(formElement, config) {
   const inputLists = Array.from(formElement.querySelectorAll(config.inputSelector));
