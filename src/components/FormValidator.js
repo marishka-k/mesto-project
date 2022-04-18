@@ -6,7 +6,17 @@ export default class FormValidator {
   this._inactiveButtonClass = validationConfig.inactiveButtonClass;
   this._inputErrorClass = validationConfig.inputErrorClass;
   }
-  
+
+  _showError(errorElement, inputElement) {
+    inputElement.classList.add(this._inputErrorClass);
+    errorElement.textContent = inputElement.validationMessage;
+  }
+
+  _hideError(errorElement, inputElement) {
+    inputElement.classList.remove(this._inputErrorClass);
+    errorElement.textContent = inputElement.validationMessage;
+  }
+
   _checkInputValidity(inputElement, formElement) {
     const _isInputValid = inputElement.validity.valid;
     const _errorElement = formElement.querySelector(`#${inputElement.id}-error`);

@@ -1,4 +1,4 @@
-function showError(errorElement, inputElement, config) {
+/* function showError(errorElement, inputElement, config) {
   inputElement.classList.add(config.inputErrorClass);
   errorElement.textContent = inputElement.validationMessage;
 }
@@ -6,7 +6,7 @@ function showError(errorElement, inputElement, config) {
 function hideError(errorElement, inputElement, config) {
   inputElement.classList.remove(config.inputErrorClass);
   errorElement.textContent = inputElement.validationMessage;
-}
+} */
 
 // function checkInputValidity(inputElement, formElement, config) {
 //   const isInputValid = inputElement.validity.valid;
