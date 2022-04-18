@@ -8,15 +8,15 @@ function hideError(errorElement, inputElement, config) {
   errorElement.textContent = inputElement.validationMessage;
 }
 
-function checkInputValidity(inputElement, formElement, config) {
-  const isInputValid = inputElement.validity.valid;
-  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  if (!isInputValid) {
-    showError(errorElement, inputElement, config);
-  } else {
-    hideError(errorElement, inputElement, config);
-  }
-}
+// function checkInputValidity(inputElement, formElement, config) {
+//   const isInputValid = inputElement.validity.valid;
+//   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+//   if (!isInputValid) {
+//     showError(errorElement, inputElement, config);
+//   } else {
+//     hideError(errorElement, inputElement, config);
+//   }
+// }
 
 function activateSubmitButton(button, isActive, config) {
   if (isActive) {

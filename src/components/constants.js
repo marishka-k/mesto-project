@@ -26,7 +26,6 @@ export const createCardButton = addCardForm.elements.create_card;
 export const deleteCardForm = document.forms.delete_card;
 
 export const validationConfig = {
-  formSelector: '.popup__form',
   inputSelector: '.popup__item',
   submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__button_disabled',
