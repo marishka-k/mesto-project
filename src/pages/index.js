@@ -1,5 +1,5 @@
 import { openPopup, closePopup } from "./modal";
-import { Card } from "../components/Card";
+import { Card } from "../components/card1";
 import { profileEditButton, popupProfile, cardsContent, profileAvatarButton, popupAvatar,
          profileAddButton, popupCard, profileEditForm, profileNameEdit, contactInfoEdit,
          profileAvatarEditForm, profileImageEdit, addCardForm, placeName, placeAdres,
