@@ -1,12 +1,12 @@
 import { openPopup, closePopup } from "./modal";
-import { Card } from "./card";
+import { Card } from "../components/Card";
 import { profileEditButton, popupProfile, cardsContent, profileAvatarButton, popupAvatar,
          profileAddButton, popupCard, profileEditForm, profileNameEdit, contactInfoEdit,
          profileAvatarEditForm, profileImageEdit, addCardForm, placeName, placeAdres,
          changeAvatarButton, changeProfileButton, createCardButton, validationConfig, profileName,
          profileContactInfo, profileImage } from "./constants";
-import FormValidator from "./FormValidator"
-import {api} from "./api"
+import FormValidator from "../components/FormValidator"
+import {api} from "../components/api"
 
 import {renderLoading} from "./utils"
 import '../styles/index.css';
