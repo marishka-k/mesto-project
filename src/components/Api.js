@@ -1,4 +1,4 @@
-class Api {
+export default class Api {
   constructor(object) {
     this.url = object.url;
     this.headers = object.headers;
@@ -8,7 +8,7 @@ class Api {
     return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
   }
 
-  getProfileInfotmation() {
+  getProfileInformation() {
     return fetch(`${this.url}/users/me`, {
       headers: this.headers,
     }).then(this.checkResponse)

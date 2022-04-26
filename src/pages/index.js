@@ -60,87 +60,57 @@ Promise.all([api.getProfileInformation(), api.getCardsArray()])
     return Promise.reject(`Ошибка: ${err.status}`);
   })
 
+// popupWithImage
+export const popupWithImage = new PopupWithImage('#popup_image');
 
-// открыть попап "обновить аватар"
-profileAvatarButton.addEventListener("click", () => {
-  openPopup(popupAvatar);
+// popupWithFormAvatar
+const popupWithFormAvatar = new PopupWithForm({
+  selector: '#popup_avatar',
+  callback: (data) => {
+    userInfo.setUserAvatar(data);
+  }
 });
 
-// открыть попап "редактировать профиль"
+// popupWithFormProfile
+const popupWithFormProfile = new PopupWithForm({
+  selector: '#popup_profile',
+  callback: (data) => {
+    userInfo.setUserInfo(data);
+  }
+});
+
+// popupWithFormCard
+const popupWithFormCard = new PopupWithForm({
+  selector: '#popup_card',
+  callback: (data) => {
+    renderLoading (true, createCardButton);
+    api.addCardToServer({link: data.place_adres, name: data.place_name})
+    .then ((data) => {
+      const card = new Card(data, '#card-template');
+      const cardElement = card.generateCard();
+      const cardList = new Section({items: []}, '.cards__content')
+      cardList.addItem(cardElement);
+    })
+    .catch((err) => {
+      return Promise.reject(`Ошибка: ${err.status}`);
+    })
+    .finally (() => renderLoading (false, createCardButton, "Создать"))
+  }
+})
+
+// слушатель - нажатие на кнопку открытия редактирования аватара
+profileAvatarButton.addEventListener("click", () => {
+  popupWithFormAvatar.open();
+});
+
+// слушатель - нажатие на кнопку открытия редактирования профиля
 profileEditButton.addEventListener("click", () => {
   profileNameEdit.value = profileName.textContent;
   contactInfoEdit.value = profileContactInfo.textContent;
-  openPopup(popupProfile);
+  popupWithFormProfile.open();
 });
 
-// открыть попап "новое место"
+// слушатель - нажатие на кнопку открытия создания места
 profileAddButton.addEventListener("click", () => {
-  openPopup(popupCard);
+  popupWithFormCard.open();
 });
-
-function editProfile(profileNameValue, contactInfoValue) {
-  profileName.textContent = profileNameValue;
-  profileContactInfo.textContent = contactInfoValue;
-}
-
-function submitProfileFormChange(evt) {
-  evt.preventDefault();
-  renderLoading(true, changeProfileButton);
-  api
-    .editProfileInformation({
-      name: profileNameEdit.value,
-      about: contactInfoEdit.value,
-    })
-    .then((dataFromServer) => {
-      editProfile(dataFromServer.name, dataFromServer.about);
-      closePopup(popupProfile);
-    })
-    .catch((err) => {
-      return Promise.reject(`Ошибка: ${err.status}`);
-    })
-    .finally(() => renderLoading(false, changeProfileButton, "Сохранить"));
-}
-
-function submitProfileAvatarChange(evt) {
-  evt.preventDefault();
-  renderLoading(true, changeAvatarButton);
-  api
-    .editProfileAvatar({ avatar: profileImageEdit.value })
-    .then((dataFromServer) => {
-      profileImage.src = dataFromServer.avatar;
-      closePopup(popupAvatar);
-      changeAvatarButton.classList.add("popup__button_disabled");
-      changeAvatarButton.disabled = "disabled";
-      profileAvatarEditForm.reset();
-    })
-    .catch((err) => {
-      return Promise.reject(`Ошибка: ${err.status}`);
-    })
-    .finally(() => renderLoading(false, changeAvatarButton, "Сохранить"));
-}
-
-function submitFormNewCard(evt) {
-  evt.preventDefault();
-  renderLoading(true, createCardButton);
-  api
-    .addCardToServer({ link: placeAdres.value, name: placeName.value })
-    .then((dataFromServer) => {
-      const card = new Card(dataFromServer);
-      const cardElement = card.generate();
-      cardsContent.prepend(cardElement);
-      closePopup(popupCard);
-      createCardButton.classList.add("popup__button_disabled");
-      createCardButton.disabled = "disabled";
-      addCardForm.reset();
-    })
-    .catch((err) => {
-      return Promise.reject(`Ошибка: ${err.status}`);
-    })
-    .finally(() => renderLoading(false, createCardButton, "Создать"));
-}
-
-profileEditForm.addEventListener("submit", submitProfileFormChange);
-
-profileAvatarEditForm.addEventListener("submit", submitProfileAvatarChange);
-
-addCardForm.addEventListener("submit", submitFormNewCard);
