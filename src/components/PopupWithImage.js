@@ -1,7 +1,6 @@
 import Popup from "./popup";
 import { popupHeadingPlaceImage, popupImageItem } from "../utils/constants";
 
-
 //открытие попапа с картинкой
 export default class PopupWithImage extends Popup {
   open(name, link) {

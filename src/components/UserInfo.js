@@ -14,7 +14,8 @@ export default class UserInfo {
     с данными пользователя. НЕ ИСПОЛЬЗУЕТСЯ, тк Promise.all. */
   getUserInfo() {
     this.userInfo = {};
-    api.getProfileInformation().then((data) => {
+    api.getProfileInformation()
+      .then((data) => {
         this.userInfo.name = data.name;
         this.userInfo.about = data.about;
         this._name.textContent = data.name;
@@ -40,8 +41,7 @@ export default class UserInfo {
   // метод получает новые данные пользователя, отправляет их на сервер и добавляет их на страницу.
   setUserInfo(newUserInfo) {
     renderLoading(true, changeProfileButton);
-    api
-      .editProfileInformation({
+    api.editProfileInformation({
         name: newUserInfo.profile_name,
         about: newUserInfo.contact_info,
       })
@@ -59,7 +59,8 @@ export default class UserInfo {
   // Метод смены аватарки
   setUserAvatar(newUserAvatar) {
     renderLoading(true, changeAvatarButton);
-    api.editProfileAvatar({ avatar: newUserAvatar.profile_image }).then((data) => {
+    api.editProfileAvatar({ avatar: newUserAvatar.profile_image })
+      .then((data) => {
         changeAvatarButton.classList.add("popup__button_disabled");
         changeAvatarButton.disabled = "disabled";
         this.addUserAvatarToDom(data.avatar);

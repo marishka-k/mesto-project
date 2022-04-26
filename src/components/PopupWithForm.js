@@ -2,17 +2,17 @@ import Popup from "./popup";
 
 export default class PopupWithForm extends Popup {
   // Кроме селектора попапа принимает в конструктор колбэк сабмита формы. В этом колбэке содержится метод класса Api.
-  constructor({selector, callback}) {
+  constructor({ selector, callback }) {
     super(selector);
     this._callback = callback;
-    this._form = this._popup.querySelector('.popup__form');
+    this._form = this._popup.querySelector(".popup__form");
   }
 
   // Содержит приватный метод _getInputValues, который собирает данные всех полей формы.
   _getInputValues() {
-    this._inputList = this._form.querySelectorAll('.popup__item');
+    this._inputList = this._form.querySelectorAll(".popup__item");
     this._formValues = {};
-    this._inputList.forEach(input => {
+    this._inputList.forEach((input) => {
       this._formValues[input.name] = input.value;
     });
     return this._formValues;
@@ -21,7 +21,7 @@ export default class PopupWithForm extends Popup {
   // Перезаписывает родительский метод setEventListeners. Метод setEventListeners класса PopupWithForm должен не только добавлять обработчик клика иконке закрытия, но и добавлять обработчик сабмита формы.
   setEventListeners() {
     super.setEventListeners();
-    this._form.addEventListener('submit', this._formSubmit);
+    this._form.addEventListener("submit", this._formSubmit);
   }
 
   // Перезаписывает родительский метод close, так как при закрытии попапа форма должна ещё и сбрасываться.
@@ -35,5 +35,5 @@ export default class PopupWithForm extends Popup {
     evt.preventDefault();
     this._callback(this._getInputValues());
     this.close();
-  }
+  };
 }

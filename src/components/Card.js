@@ -46,11 +46,11 @@ export default class Card {
   // установка всех обработчиков
   setEventListeners() {
     const cardReaction = this._card.querySelector(".card__reaction");
-    cardReaction.addEventListener('click', this._cardReaction);
+    cardReaction.addEventListener("click", this._cardReaction);
     const cardImage = this._card.querySelector(".card__image");
-    cardImage.addEventListener('click', this._openPopupImage);
+    cardImage.addEventListener("click", this._openPopupImage);
     const cardRemove = this._card.querySelector(".card__remove");
-    cardRemove.addEventListener('click', this._removeCard);
+    cardRemove.addEventListener("click", this._removeCard);
   }
 
   //обработчик - нажатие на картинку

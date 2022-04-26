@@ -5,21 +5,21 @@ export default class Api {
   }
 
   checkResponse = (res) => {
-    return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
-  }
+    return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
+  };
 
   getProfileInformation() {
     return fetch(`${this.url}/users/me`, {
       headers: this.headers,
-    }).then(this.checkResponse)
+    }).then(this.checkResponse);
   }
 
   editProfileInformation(profileInformation) {
     return fetch(`${this.url}/users/me`, {
-      method: 'PATCH',
+      method: "PATCH",
       headers: this.headers,
       body: JSON.stringify(profileInformation),
-    }).then(this.checkResponse)
+    }).then(this.checkResponse);
   }
 
   editProfileAvatar(profileAvatar) {
@@ -27,13 +27,13 @@ export default class Api {
       method: "PATCH",
       headers: this.headers,
       body: JSON.stringify(profileAvatar),
-    }).then(this.checkResponse)
+    }).then(this.checkResponse);
   }
 
   getCardsArray() {
     return fetch(`${this.url}/cards`, {
       headers: this.headers,
-    }).then(this.checkResponse)
+    }).then(this.checkResponse);
   }
 
   addCardToServer(data) {
@@ -41,35 +41,35 @@ export default class Api {
       method: "POST",
       headers: this.headers,
       body: JSON.stringify(data),
-    }).then(this.checkResponse)
+    }).then(this.checkResponse);
   }
 
   removeCardToServer(cardId) {
     return fetch(`${this.url}/cards/${cardId}`, {
       headers: this.headers,
       method: "DELETE",
-    }).then(this.checkResponse)
+    }).then(this.checkResponse);
   }
 
   addLike(cardId) {
     return fetch(`${this.url}/cards/likes/${cardId}`, {
       method: "PUT",
       headers: this.headers,
-    }).then(this.checkResponse)
+    }).then(this.checkResponse);
   }
 
   removeLike(cardId) {
     return fetch(`${this.url}/cards/likes/${cardId}`, {
       method: "DELETE",
       headers: this.headers,
-    }).then(this.checkResponse)
+    }).then(this.checkResponse);
   }
 }
 
 export const api = new Api({
-  url: 'https://nomoreparties.co/v1/plus-cohort-8',
+  url: "https://nomoreparties.co/v1/plus-cohort-8",
   headers: {
-    authorization: 'f6f0e19f-3261-436f-8b67-2b9918fd933f',
-    'Content-Type': 'application/json'
-  }
+    authorization: "f6f0e19f-3261-436f-8b67-2b9918fd933f",
+    "Content-Type": "application/json",
+  },
 });
