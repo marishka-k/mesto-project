@@ -50,7 +50,7 @@ Promise.all([api.getProfileInformation(), api.getCardsArray()])
       {
         items: cards,
         renderer: (item) => {
-          const card = new Card(item, "#card-template");
+          const card = new Card(item, "#card-template", userId);
           const cardElement = card.generateCard();
           cardList.addItem(cardElement, "append");
         },
@@ -89,7 +89,7 @@ const popupWithFormCard = new PopupWithForm({
     renderLoading(true, createCardButton);
     api.addCardToServer({ link: data.place_adres, name: data.place_name })
       .then((data) => {
-        const card = new Card(data, "#card-template");
+        const card = new Card(data, "#card-template", userId);
         const cardElement = card.generateCard();
         const cardList = new Section({ items: [] }, ".cards__content");
         cardList.addItem(cardElement);

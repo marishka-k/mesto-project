@@ -1,13 +1,14 @@
-import { api, userId, popupWithImage } from "../pages/index";
+import { api, popupWithImage } from "../pages/index";
 
 export default class Card {
-  constructor(data, selector) {
+  constructor(data, selector, userId) {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
     this._owner = data.owner;
     this._selector = selector;
     this._id = data._id;
+    this._userId = userId;
   }
 
   // получаем шаблон разметки
@@ -36,14 +37,14 @@ export default class Card {
 
   // метод добавления корзинки нашим карточкам
   _handleAddBasket() {
-    if (this._owner._id === userId) {
+    if (this._owner._id === this._userId) {
       this._cardRemove.classList.add("card__remove_active");
     }
   }
 
   // метод поиска наших лайков
   _findUserLikes() {
-    if (this._likes.find((like) => like._id === userId)) {
+    if (this._likes.find((like) => like._id === this._userId)) {
       this._cardReactionButton.classList.add("card__reaction_active");
     }
   }
