@@ -19,38 +19,40 @@ export default class Card {
   // создание карточки
   generateCard() {
     this._card = this._getTemplateCard();
+    this._cardName = this._card.querySelector(".card__name");
+    this._cardImage = this._card.querySelector(".card__image");
+    this._likeQuantity = this._card.querySelector(".card__like-quantity");
+    this._cardReactionButton = this._card.querySelector(".card__reaction");
+    this._cardRemove = this._card.querySelector(".card__remove");
     this._handleAddBasket();
     this._findUserLikes();
     this.setEventListeners();
-    this._card.querySelector(".card__name").textContent = this._name;
-    this._card.querySelector(".card__image").alt = this._name;
-    this._card.querySelector(".card__image").src = this._link;
-    this._card.querySelector(".card__like-quantity").textContent = this._likes.length;
+    this._cardName.textContent = this._name;
+    this._cardImage.alt = this._name;
+    this._cardImage.src = this._link;
+    this._likeQuantity.textContent = this._likes.length;
     return this._card;
   }
 
   // метод добавления корзинки нашим карточкам
   _handleAddBasket() {
     if (this._owner._id === userId) {
-      this._card.querySelector(".card__remove").classList.add("card__remove_active");
+      this._cardRemove.classList.add("card__remove_active");
     }
   }
 
   // метод поиска наших лайков
   _findUserLikes() {
     if (this._likes.find((like) => like._id === userId)) {
-      this._card.querySelector(".card__reaction").classList.add("card__reaction_active");
+      this._cardReactionButton.classList.add("card__reaction_active");
     }
   }
 
   // установка всех обработчиков
   setEventListeners() {
-    const cardReaction = this._card.querySelector(".card__reaction");
-    cardReaction.addEventListener("click", this._cardReaction);
-    const cardImage = this._card.querySelector(".card__image");
-    cardImage.addEventListener("click", this._openPopupImage);
-    const cardRemove = this._card.querySelector(".card__remove");
-    cardRemove.addEventListener("click", this._removeCard);
+    this._cardReactionButton.addEventListener("click", this._cardReaction);
+    this._cardImage.addEventListener("click", this._openPopupImage);
+    this._cardRemove.addEventListener("click", this._removeCard);
   }
 
   //обработчик - нажатие на картинку
@@ -60,11 +62,10 @@ export default class Card {
 
   // обработчик - нажатие на кнопку лайка
   _cardReaction = (evt) => {
-    const cardLikeQuantity = this._card.querySelector(".card__like-quantity");
     if (evt.target.classList.contains("card__reaction_active")) {
       api.removeLike(this._id)
       .then((card) => {
-        cardLikeQuantity.textContent = card.likes.length;
+        this._likeQuantity.textContent = card.likes.length;
         evt.target.classList.remove("card__reaction_active");
       })
       .catch((err) => {
@@ -73,7 +74,7 @@ export default class Card {
     } else {
       api.addLike(this._id)
       .then((card) => {
-        cardLikeQuantity.textContent = card.likes.length;
+        this._likeQuantity.textContent = card.likes.length;
         evt.target.classList.add("card__reaction_active");
       })
       .catch((err) => {
