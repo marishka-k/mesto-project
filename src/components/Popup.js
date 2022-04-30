@@ -1,6 +1,6 @@
 export default class Popup {
-  constructor(selector) {
-    this._popup = document.querySelector(selector);
+  constructor(popupId) {
+    this._popup = document.querySelector(popupId);
     this._buttonPopupClose = this._popup.querySelector(".popup__close");
   }
 
@@ -18,23 +18,23 @@ export default class Popup {
 
   // устанавливает слушателей
   setEventListeners() {
-    this._buttonPopupClose.addEventListener("click", this._нandleButtonClose);
-    document.addEventListener("keydown", this._нandleEscClose);
+    this._buttonPopupClose.addEventListener("click", this._handleButtonClose);
+    document.addEventListener("keydown", this._handleEscClose);
     document.addEventListener("mousedown", this._handleOverlayClose);
   }
 
   // удаляет слушателей
   removeEventListeners() {
-    this._buttonPopupClose.removeEventListener("click",this._нandleButtonClose);
-    document.removeEventListener("keydown", this._нandleEscClose);
+    this._buttonPopupClose.removeEventListener("click",this._handleButtonClose);
+    document.removeEventListener("keydown", this._handleEscClose);
     document.removeEventListener("mousedown", this._handleOverlayClose);
   }
 
   // Методы закрытия попапа
-  _нandleButtonClose = () => {
+  _handleButtonClose = () => {
     this.close();
   };
-  _нandleEscClose = (evt) => {
+  _handleEscClose = (evt) => {
     if (evt.key === "Escape") {
       this.close();
     }

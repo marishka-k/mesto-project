@@ -65,11 +65,3 @@ export default class Api {
     }).then(this.checkResponse);
   }
 }
-
-export const api = new Api({
-  url: "https://nomoreparties.co/v1/plus-cohort-8",
-  headers: {
-    authorization: "f6f0e19f-3261-436f-8b67-2b9918fd933f",
-    "Content-Type": "application/json",
-  },
-});

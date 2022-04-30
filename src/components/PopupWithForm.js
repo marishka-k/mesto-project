@@ -2,8 +2,8 @@ import Popup from "./popup";
 
 export default class PopupWithForm extends Popup {
   // Кроме селектора попапа принимает в конструктор колбэк сабмита формы. В этом колбэке содержится метод класса Api.
-  constructor({ selector, callback }) {
-    super(selector);
+  constructor({ popupId, callback }) {
+    super(popupId);
     this._callback = callback;
     this._form = this._popup.querySelector(".popup__form");
   }
@@ -22,6 +22,10 @@ export default class PopupWithForm extends Popup {
   setEventListeners() {
     super.setEventListeners();
     this._form.addEventListener("submit", this._formSubmit);
+  }
+  removeEventListeners() {
+    super.removeEventListeners()
+    this._form.removeEventListener("submit", this._formSubmit);
   }
 
   // Перезаписывает родительский метод close, так как при закрытии попапа форма должна ещё и сбрасываться.

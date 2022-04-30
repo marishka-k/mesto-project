@@ -1,19 +1,19 @@
 import { api, popupWithImage } from "../pages/index";
 
 export default class Card {
-  constructor(data, selector, userId) {
+  constructor(data, templateId, userId) {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
     this._owner = data.owner;
-    this._selector = selector;
+    this._templateId = templateId;
     this._id = data._id;
     this._userId = userId;
   }
 
   // получаем шаблон разметки
   _getTemplateCard() {
-    const templateCard = document.querySelector(this._selector).content.querySelector(".card").cloneNode(true);
+    const templateCard = document.querySelector(this._templateId).content.querySelector(".card").cloneNode(true);
     return templateCard;
   }
 

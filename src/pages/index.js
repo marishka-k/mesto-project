@@ -47,24 +47,24 @@ const userInfo = new UserInfo({
   selectorAvatar: ".profile__image",
 });
 
+const cardList = new Section(
+  {
+    items: [],
+    renderer: (item) => {
+      const card = new Card(item, "#card-template", userId);
+      return card.generateCard();
+    },
+  },
+  ".cards__content"
+);
+
 // загружаем профиль и карточки с сервера
 Promise.all([api.getProfileInformation(), api.getCardsArray()])
   .then(([userData, cards]) => {
     userId = userData._id;
     userInfo.addUserInfoToDom(userData.name, userData.about);
     userInfo.addUserAvatarToDom(userData.avatar);
-    const cardList = new Section(
-      {
-        items: cards,
-        renderer: (item) => {
-          const card = new Card(item, "#card-template", userId);
-          const cardElement = card.generateCard();
-          cardList.addItem(cardElement, "append");
-        },
-      },
-      ".cards__content"
-    );
-    cardList.renderItems();
+    cardList.renderItems(cards, "append");
   })
   .catch((err) => {
     console.log (`Ошибка: ${err.message}`);
@@ -75,7 +75,7 @@ export const popupWithImage = new PopupWithImage("#popup_image");
 
 // popupWithFormAvatar
 const popupWithFormAvatar = new PopupWithForm({
-  selector: "#popup_avatar",
+  popupId: "#popup_avatar",
   callback: (data) => {
     userInfo.setUserAvatar(data);
   },
@@ -83,7 +83,7 @@ const popupWithFormAvatar = new PopupWithForm({
 
 // popupWithFormProfile
 const popupWithFormProfile = new PopupWithForm({
-  selector: "#popup_profile",
+  popupId: "#popup_profile",
   callback: (data) => {
     userInfo.setUserInfo(data);
   },
@@ -91,15 +91,12 @@ const popupWithFormProfile = new PopupWithForm({
 
 // popupWithFormCard
 const popupWithFormCard = new PopupWithForm({
-  selector: "#popup_card",
+  popupId: "#popup_card",
   callback: (data) => {
     renderLoading(true, createCardButton);
     api.addCardToServer({ link: data.place_adres, name: data.place_name })
       .then((data) => {
-        const card = new Card(data, "#card-template", userId);
-        const cardElement = card.generateCard();
-        const cardList = new Section({ items: [] }, ".cards__content");
-        cardList.addItem(cardElement);
+        cardList.renderItems([data]);
       })
       .catch((err) => {
         console.log (`Ошибка: ${err.message}`);
