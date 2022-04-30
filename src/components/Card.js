@@ -1,7 +1,5 @@
-import { api, popupWithImage } from "../pages/index";
-
 export default class Card {
-  constructor(data, templateId, userId) {
+  constructor(data, templateId, userId, {removeCardToServer, removeLikeToServer , addLikeToServer, openPopupImage}) {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
@@ -9,6 +7,10 @@ export default class Card {
     this._templateId = templateId;
     this._id = data._id;
     this._userId = userId;
+    this._removeCardToServer = removeCardToServer;
+    this._removeLikeToServer = removeLikeToServer;
+    this._addLikeToServer = addLikeToServer;
+    this._openPopupImage = openPopupImage;
   }
 
   // получаем шаблон разметки
@@ -49,49 +51,44 @@ export default class Card {
     }
   }
 
-  // установка всех обработчиков
+  // установка обработчиков
   setEventListeners() {
-    this._cardReactionButton.addEventListener("click", this._cardReaction);
-    this._cardImage.addEventListener("click", this._openPopupImage);
-    this._cardRemove.addEventListener("click", this._removeCard);
+    this._cardReactionButton.addEventListener("click", this._handleCardReaction);
+    this._cardImage.addEventListener("click", this._handleOpenPopupImage);
+    this._cardRemove.addEventListener("click", this._handleRemoveCard);
   }
 
-  //обработчик - нажатие на картинку
-  _openPopupImage = () => {
-    popupWithImage.open(this._name, this._link);
+  // метод - нажатие на картинку карточки
+  _handleOpenPopupImage = () => {
+    this._openPopupImage(this._name, this._link);
   }
 
-  // обработчик - нажатие на кнопку лайка
-  _cardReaction = (evt) => {
+  // метод - нажатие на кнопку лайка карточки
+  _handleCardReaction = (evt) => {
     if (evt.target.classList.contains("card__reaction_active")) {
-      api.removeLike(this._id)
-      .then((card) => {
-        this._likeQuantity.textContent = card.likes.length;
-        evt.target.classList.remove("card__reaction_active");
-      })
-      .catch((err) => {
-        console.log (`Ошибка: ${err.message}`);
-      })
-    } else {
-      api.addLike(this._id)
-      .then((card) => {
-        this._likeQuantity.textContent = card.likes.length;
-        evt.target.classList.add("card__reaction_active");
-      })
-      .catch((err) => {
-        console.log (`Ошибка: ${err.message}`);
-      });
-    }
-  }
+    this._removeLikeToServer(this._id)
+    } else this._addLikeToServer(this._id);
+  };
 
-  // обработчик - нажатие на кнопку удаления карточки
-  _removeCard = () => {
-    api.removeCardToServer(this._id)
-    .then(() => {
-      this._card.remove();
-    })
-    .catch((err) => {
-      console.log (`Ошибка: ${err.message}`);
-    });
+  // метод - удаление лайка
+  _removeLike = (likeQuantity) => {
+    this._cardReactionButton.classList.remove("card__reaction_active");
+    this._likeQuantity.textContent = likeQuantity;
+  };
+
+  // метод - добавления лайка
+  _addLike = (likeQuantity) => {
+    this._cardReactionButton.classList.add("card__reaction_active");
+    this._likeQuantity.textContent = likeQuantity;
+  };
+
+  // метод - нажатие на кнопку удаления карточки
+  _handleRemoveCard = () => {
+    this._removeCardToServer(this._id);
+  };
+  
+  // метод - удаление карточки
+  _deleteCard = () => {
+    this._card.remove();
   }
 }

@@ -51,7 +51,47 @@ const cardList = new Section(
   {
     items: [],
     renderer: (item) => {
-      const card = new Card(item, "#card-template", userId);
+      const card = new Card(item, "#card-template", userId,
+        {
+          // Удаление карточки с сервера
+          removeCardToServer: (cardId) => {
+            api.removeCardToServer(cardId)
+            .then(() => {
+              card._deleteCard();
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+          },
+
+          // Удаление лайка на сервер
+          removeLikeToServer: (cardId) => {
+            api.removeLike(cardId)
+            .then((data) => {
+              card._removeLike(data.likes.length);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+          },
+
+          // Добавление лайка на сервер
+          addLikeToServer: (cardId) => {
+            api.addLike(cardId)
+            .then((data) => {
+              card._addLike(data.likes.length);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+          },
+
+          // Открытие попапа с картинкой
+          openPopupImage: (name, link) => {
+            popupWithImage.open(name, link)
+          }
+        }
+      );
       return card.generateCard();
     },
   },
