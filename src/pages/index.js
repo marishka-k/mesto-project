@@ -17,9 +17,7 @@ import {
   profileAvatarButton,
   validationConfig,
   profileAddButton,
-  createCardButton,
-  changeAvatarButton,
-  changeProfileButton
+  createCardButton
 } from "../utils/constants";
 
 export let userId = "";
