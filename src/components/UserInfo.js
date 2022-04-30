@@ -22,7 +22,7 @@ export default class UserInfo {
         this._aboutSelf.textContent = data.about;
       })
       .catch((err) => {
-        return Promise.reject(`Ошибка: ${err.status}`);
+        console.log (`Ошибка: ${err.message}`);
       });
     return this.userInfo;
   }
@@ -51,7 +51,7 @@ export default class UserInfo {
         this.addUserInfoToDom(data.name, data.about);
       })
       .catch((err) => {
-        return Promise.reject(`Ошибка: ${err.status}`);
+        console.log (`Ошибка: ${err.message}`);
       })
       .finally(() => renderLoading(false, changeProfileButton, "Сохранить"));
   }
@@ -66,7 +66,7 @@ export default class UserInfo {
         this.addUserAvatarToDom(data.avatar);
       })
       .catch((err) => {
-        return Promise.reject(`Ошибка: ${err.status}`);
+        console.log (`Ошибка: ${err.message}`);
       })
       .finally(() => renderLoading(false, changeAvatarButton, "Сохранить"));
   }

@@ -70,7 +70,7 @@ export default class Card {
         evt.target.classList.remove("card__reaction_active");
       })
       .catch((err) => {
-        return Promise.reject(`Ошибка: ${err.status}`);
+        console.log (`Ошибка: ${err.message}`);
       })
     } else {
       api.addLike(this._id)
@@ -79,7 +79,7 @@ export default class Card {
         evt.target.classList.add("card__reaction_active");
       })
       .catch((err) => {
-        return Promise.reject(`Ошибка: ${err.status}`);
+        console.log (`Ошибка: ${err.message}`);
       });
     }
   }
@@ -91,7 +91,7 @@ export default class Card {
       this._card.remove();
     })
     .catch((err) => {
-      return Promise.reject(`Ошибка: ${err.status}`);
+      console.log (`Ошибка: ${err.message}`);
     });
   }
 }

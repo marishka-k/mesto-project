@@ -60,7 +60,7 @@ Promise.all([api.getProfileInformation(), api.getCardsArray()])
     cardList.renderItems();
   })
   .catch((err) => {
-    return Promise.reject(`Ошибка: ${err.status}`);
+    console.log (`Ошибка: ${err.message}`);
   });
 
 // popupWithImage
@@ -95,7 +95,7 @@ const popupWithFormCard = new PopupWithForm({
         cardList.addItem(cardElement);
       })
       .catch((err) => {
-        return Promise.reject(`Ошибка: ${err.status}`);
+        console.log (`Ошибка: ${err.message}`);
       })
       .finally(() => renderLoading(false, createCardButton, "Создать"));
   },
