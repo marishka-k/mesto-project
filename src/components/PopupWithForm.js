@@ -38,5 +38,12 @@ export default class PopupWithForm extends Popup {
   _formSubmit = (evt) => {
     evt.preventDefault();
     this._callback(this._getInputValues());
-   };
+  };
+
+  renderLoading(isLoading, buttonText) {
+    this._submitButton = this._popup.querySelector(".popup__button");
+    if (isLoading) {
+      this._submitButton.textContent = `Сохранение...`;
+    } else this._submitButton.textContent = buttonText;
+  }
 }

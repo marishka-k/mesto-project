@@ -18,6 +18,8 @@ import {
   validationConfig,
   profileAddButton,
   createCardButton,
+  changeAvatarButton,
+  changeProfileButton
 } from "../utils/constants";
 
 export let userId = "";
@@ -102,8 +104,8 @@ const cardList = new Section(
 Promise.all([api.getProfileInformation(), api.getCardsArray()])
   .then(([userData, cards]) => {
     userId = userData._id;
-    userInfo.addUserInfoToDom(userData.name, userData.about);
-    userInfo.addUserAvatarToDom(userData.avatar);
+    userInfo.changeUserInfo(userData.name, userData.about);
+    userInfo.changeUserAvatar(userData.avatar);
     cardList.renderItems(cards, "append");
   })
   .catch((err) => {
@@ -116,16 +118,39 @@ const popupWithImage = new PopupWithImage("#popup_image", ".popup__heading_place
 // popupWithFormAvatar
 const popupWithFormAvatar = new PopupWithForm({
   popupId: "#popup_avatar",
-  callback: (data) => {
-    userInfo.setUserAvatar(data);
+  callback: (avatar) => {
+    popupWithFormAvatar.renderLoading(true);
+    api.editProfileAvatar({ avatar: avatar.profile_image })
+    .then(() => {
+      formAvatarEdit.resetValidation();
+      userInfo.changeUserAvatar(avatar.profile_image);
+      popupWithFormAvatar.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => popupWithFormAvatar.renderLoading(false, "Сохранить"));
   },
 });
 
 // popupWithFormProfile
 const popupWithFormProfile = new PopupWithForm({
   popupId: "#popup_profile",
-  callback: (data) => {
-    userInfo.setUserInfo(data);
+  callback: (user) => {
+    popupWithFormProfile.renderLoading(true);
+    api.editProfileInformation({
+      name: user.profile_name,
+      about: user.contact_info,
+    })
+    .then(() => {
+      formProfileEdit.resetValidation();
+      userInfo.changeUserInfo(user.profile_name, user.contact_info);
+      popupWithFormProfile.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => popupWithFormProfile.renderLoading(false, "Сохранить"));
   },
 });
 
@@ -137,6 +162,7 @@ const popupWithFormCard = new PopupWithForm({
     api.addCardToServer({ link: data.place_adres, name: data.place_name })
       .then((data) => {
         cardList.renderItems([data]);
+        popupWithFormCard.close();
       })
       .catch((err) => {
         console.log (`Ошибка: ${err.message}`);
