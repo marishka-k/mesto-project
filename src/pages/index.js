@@ -15,8 +15,7 @@ import {
   contactInfoEdit,
   profileAvatarButton,
   validationConfig,
-  profileAddButton,
-  createCardButton
+  profileAddButton
 } from "../utils/constants";
 
 export let userId = "";
@@ -155,16 +154,17 @@ const popupWithFormProfile = new PopupWithForm({
 const popupWithFormCard = new PopupWithForm({
   popupId: "#popup_card",
   callback: (data) => {
-    popupWithFormCard.renderLoading(true, createCardButton);
+    popupWithFormCard.renderLoading(true);
     api.addCardToServer({ link: data.place_adres, name: data.place_name })
       .then((data) => {
+        formAddCard.resetValidation();
         cardList.renderItems([data]);
         popupWithFormCard.close();
       })
       .catch((err) => {
         console.log (`Ошибка: ${err.message}`);
       })
-      .finally(() => popupWithFormCard.renderLoading(false, createCardButton, "Создать"));
+      .finally(() => popupWithFormCard.renderLoading(false, "Создать"));
   },
 });
 
@@ -187,3 +187,5 @@ profileAddButton.addEventListener("click", () => {
   formAddCard.resetValidation();
   popupWithFormCard.open();
 });
+
+console.log();
