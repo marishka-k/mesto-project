@@ -6,7 +6,6 @@ import PopupWithImage from "../components/PopupWithImage";
 import FormValidator from "../components/FormValidator";
 import Card from "../components/Card";
 import Section from "../components/Section";
-import renderLoading from "../utils/renderLoading";
 
 import {
   profileName,
@@ -156,7 +155,7 @@ const popupWithFormProfile = new PopupWithForm({
 const popupWithFormCard = new PopupWithForm({
   popupId: "#popup_card",
   callback: (data) => {
-    renderLoading(true, createCardButton);
+    popupWithFormCard.renderLoading(true, createCardButton);
     api.addCardToServer({ link: data.place_adres, name: data.place_name })
       .then((data) => {
         cardList.renderItems([data]);
@@ -165,7 +164,7 @@ const popupWithFormCard = new PopupWithForm({
       .catch((err) => {
         console.log (`Ошибка: ${err.message}`);
       })
-      .finally(() => renderLoading(false, createCardButton, "Создать"));
+      .finally(() => popupWithFormCard.renderLoading(false, createCardButton, "Создать"));
   },
 });
 
