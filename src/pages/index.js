@@ -111,7 +111,7 @@ Promise.all([api.getProfileInformation(), api.getCardsArray()])
   });
 
 // popupWithImage
-export const popupWithImage = new PopupWithImage("#popup_image");
+const popupWithImage = new PopupWithImage("#popup_image", ".popup__heading_place_image", ".popup__image");
 
 // popupWithFormAvatar
 const popupWithFormAvatar = new PopupWithForm({
