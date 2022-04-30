@@ -23,8 +23,15 @@ import {
 export let userId = "";
 
 // запуск валидации полей
-const formValidator = new FormValidator({ validationConfig }, ".popup__form");
-formValidator.enableValidation();
+const formProfileEdit = new FormValidator({ validationConfig }, document.forms.profile_edit);
+formProfileEdit.enableValidation();
+
+const formAvatarEdit = new FormValidator({ validationConfig }, document.forms.profile_avatar_edit);
+formAvatarEdit.enableValidation();
+
+const formAddCard = new FormValidator({ validationConfig }, document.forms.add_card);
+formAddCard.enableValidation();
+
 
 export const api = new Api({
   url: "https://nomoreparties.co/v1/plus-cohort-8",
@@ -103,6 +110,7 @@ const popupWithFormCard = new PopupWithForm({
 
 // слушатель - нажатие на кнопку открытия редактирования аватара
 profileAvatarButton.addEventListener("click", () => {
+  formAvatarEdit.resetValidation();
   popupWithFormAvatar.open();
 });
 
@@ -110,10 +118,12 @@ profileAvatarButton.addEventListener("click", () => {
 profileEditButton.addEventListener("click", () => {
   profileNameEdit.value = profileName.textContent;
   contactInfoEdit.value = profileContactInfo.textContent;
+  formProfileEdit.resetValidation();
   popupWithFormProfile.open();
 });
 
 // слушатель - нажатие на кнопку открытия создания места
 profileAddButton.addEventListener("click", () => {
+  formAddCard.resetValidation();
   popupWithFormCard.open();
 });
