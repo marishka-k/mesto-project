@@ -18,3 +18,9 @@
 ### Ссылка на сайт:
 
 https://marishka-k.github.io/mesto-project/
+
+### репозитории авторов:
+
+https://github.com/marishka-k
+https://github.com/alex-dust
+
