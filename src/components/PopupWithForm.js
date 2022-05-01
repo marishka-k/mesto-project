@@ -7,6 +7,7 @@ export default class PopupWithForm extends Popup {
     this._callback = callback;
     this._form = this._popup.querySelector(".popup__form");
     this._inputList = this._form.querySelectorAll(".popup__item");
+    this._submitButton = this._popup.querySelector(".popup__button");
   }
 
   // Содержит приватный метод _getInputValues, который собирает данные всех полей формы.
@@ -41,7 +42,6 @@ export default class PopupWithForm extends Popup {
   };
 
   renderLoading(isLoading, buttonText) {
-    this._submitButton = this._popup.querySelector(".popup__button");
     if (isLoading) {
       this._submitButton.textContent = `Сохранение...`;
     } else this._submitButton.textContent = buttonText;

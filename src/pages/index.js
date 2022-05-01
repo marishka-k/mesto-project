@@ -118,7 +118,6 @@ const popupWithFormAvatar = new PopupWithForm({
     popupWithFormAvatar.renderLoading(true);
     api.editProfileAvatar({ avatar: avatar.profile_image })
     .then(() => {
-      formAvatarEdit.resetValidation();
       userInfo.changeUserAvatar(avatar.profile_image);
       popupWithFormAvatar.close();
     })
@@ -139,7 +138,6 @@ const popupWithFormProfile = new PopupWithForm({
       about: user.contact_info,
     })
     .then(() => {
-      formProfileEdit.resetValidation();
       userInfo.changeUserInfo(user.profile_name, user.contact_info);
       popupWithFormProfile.close();
     })
@@ -157,7 +155,6 @@ const popupWithFormCard = new PopupWithForm({
     popupWithFormCard.renderLoading(true);
     api.addCardToServer({ link: data.place_adres, name: data.place_name })
       .then((data) => {
-        formAddCard.resetValidation();
         cardList.renderItems([data]);
         popupWithFormCard.close();
       })
