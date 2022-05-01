@@ -71,13 +71,13 @@ export default class Card {
   };
 
   // метод - удаление лайка
-  _removeLike = (likeQuantity) => {
+  removeLike = (likeQuantity) => {
     this._cardReactionButton.classList.remove("card__reaction_active");
     this._likeQuantity.textContent = likeQuantity;
   };
 
   // метод - добавления лайка
-  _addLike = (likeQuantity) => {
+  addLike = (likeQuantity) => {
     this._cardReactionButton.classList.add("card__reaction_active");
     this._likeQuantity.textContent = likeQuantity;
   };
@@ -86,9 +86,9 @@ export default class Card {
   _handleRemoveCard = () => {
     this._removeCardToServer(this._id);
   };
-  
+
   // метод - удаление карточки
-  _deleteCard = () => {
+  deleteCard = () => {
     this._card.remove();
   }
 }

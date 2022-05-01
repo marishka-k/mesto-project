@@ -55,7 +55,7 @@ const cardList = new Section(
           removeCardToServer: (cardId) => {
             api.removeCardToServer(cardId)
             .then(() => {
-              card._deleteCard();
+              card.deleteCard();
             })
             .catch((err) => {
               console.log(err);
@@ -66,7 +66,7 @@ const cardList = new Section(
           removeLikeToServer: (cardId) => {
             api.removeLike(cardId)
             .then((data) => {
-              card._removeLike(data.likes.length);
+              card.removeLike(data.likes.length);
             })
             .catch((err) => {
               console.log(err);
@@ -77,7 +77,7 @@ const cardList = new Section(
           addLikeToServer: (cardId) => {
             api.addLike(cardId)
             .then((data) => {
-              card._addLike(data.likes.length);
+              card.addLike(data.likes.length);
             })
             .catch((err) => {
               console.log(err);
